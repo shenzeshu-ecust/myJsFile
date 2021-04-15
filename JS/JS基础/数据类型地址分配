@@ -1,0 +1,5 @@
+简单数据类型 = 值类型 （string number boolean undefined null（特殊，是object类型）
+复杂数据类型 = 引用类型 （ Date Object Array ） 使用new创建的对象（自定义的，自带的Array、Date。。。）
+
+值类型存储的是数据本身：值。    存在栈里
+引用类型存的是地址，地址（16位数据）在栈中，地址指向堆中的数据。   最终就是 引用类型存在堆中

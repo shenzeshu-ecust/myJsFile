@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        \d  [0-9] 匹配0-9之间任一数字;
+        \D [^0-9] 匹配0-9外的字符;
+        \w [A-Za-z0-9_] 匹配任意的字母数字和下划线;
+        \W [^A-Za-z0-9_] ;
+        \s [\t\r\n\v\] 匹配空格——包含换行符 制表符 空格等;
+        \S [^\t\r\n\v\];
+     -->
+    <script>
+        // 匹配电话号码
+        // 010-12150625 或 0521-2035694
+        // ----------------------  正则中 或为|  ----------------
+        var reg = /^\d{3}-\d{8}|\d{4}-\d{7}$/
+        var res1 = reg.test('010-12150625')
+        var res2 = reg.test('0100-1210625')
+        console.log(res1, res2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //短路运算：左边的值可以确定结果时，就不计算右边的
+        //1. 逻辑与：表达式1&&表达式2
+        //如果表达式1真，则返回表达式2的值；如果表达式1假，则返回表达式1.
+        console.log(123 && 456); //456  (非空都判断为true)
+        console.log(0 && 456); //0
+        console.log('' && 987 && true); // ''  (什么也没有：空字符串)
+
+        //2.逻辑或
+        //如果表达式1真，则返回表达式1；如果表达式1假，则返回表达式2
+        console.log(0 || 459); //459
+        console.log(123 || 0); //123
+        //3 EXAMPLE
+        var num = 0;
+        result = 0 && num++ //(num++被短路了)
+            console.log(num); // 0
+        //   +=  -=  *= /=  %=
+        //优先级：一元运算符最高  ++ ！ 
+        //逻辑最低 &&  ||  ，又&& > ||
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

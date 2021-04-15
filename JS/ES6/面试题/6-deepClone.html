@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let deepClone = function(t) {
+            let result;
+            if (typeof t == 'object') {
+                if (Array.isArray(t)) {
+                    result = []
+                    for (let i in t) {
+                        result.push(deepClone(t[i]))
+                    }
+                } else if (t == null) {
+                    result = null
+                } else if (t.constructor == RegExp) {
+                    result = t
+                } else {
+                    result = {}
+                    for (let i in t) {
+                        result[i] = deepClone(t[i])
+                    }
+                }
+            } else {
+                result = t;
+            }
+            return result;
+        }
+        let regexp = /^\w/gi
+        console.log(regexp);
+        console.log(regexp.constructor);
+        console.log(regexp.constructor == RegExp);
+    </script>
+</body>
+
+</html>

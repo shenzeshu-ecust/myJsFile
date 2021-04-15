@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ...  扩展运算符 能将【数组】 转换为 逗号分割的 【参数序列】
+        const arr = ['易烊千玺', '王源', '王俊凯']
+            // [] =>  , , ,
+        function trans() {
+            console.log(arguments);
+        }
+        trans(arr) // 0: (3) ["易烊千玺", "王源", "王俊凯"]  是放在一个数组里！
+        trans(...arr) //0: "易烊千玺"
+            // 1: "王源"
+            // 2: "王俊凯"
+    </script>
+</body>
+
+</html>

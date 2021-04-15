@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // JS提供三种特殊的引用类型：String, Number, Boolean
+        // 基本包装类型就是把简单类型包装成复杂数据类型。这样的数据类型就有了属性和方法：str.length
+        var str = 'andy';
+        console.log(str.length);
+        // 按道理基本数据没有属性、方法
+        // 包装如下
+        //1 生成临时变量
+        var temp = new String('andy');
+        //2 赋值给声明字符变量
+        str = temp;
+        //3 销毁临时变量
+        temp = null;
+
+
+        //-----------------------
+        // 字符串不可变：改变字符串其实只是改变变量指针指向的内存地址；他会开辟新的内存
+        // 不要大量使用拼接字符串
+
+        // 返回字符位置indexOf('目标值'，[查询起始位置]) lastIndexOf()
+        var str1 = 'I NEVER THINK YOU ARE MINE';
+        console.log(str1.indexOf('E'));
+        console.log(str1.indexOf('E', 5));
+        console.log(str1.lastIndexOf('E'));
+
+        //-------------实例-------------
+        //1 返回所有指定字符的位置并 记录次数
+        var str2 = 'anchakjbanknancklsvdsdljfafjlan';
+        num = 0;
+        index = str2.indexOf('a'); // 0
+        while (index !== -1) {
+            console.log('指定字母所在位置为： ' + index); // 先打印所在位置
+            num++;
+            index = str2.indexOf('a', index + 1); // 从查到的index下一位开始查询
+        }
+        console.log('指定字母出现次数为： ' + num);
+
+        //2 针对数组 实现查询目标所在所有位置
+        var arr = ['red', 'blue', 'red', 'purple', 'white', 'red', 'black', 'green'];
+        count = 0;
+        index_arr = arr.indexOf('red');
+        while (index_arr !== -1) {
+            console.log('该字符出现在 ' + index_arr);
+            count++;
+            index_arr = arr.indexOf('red', index_arr + 1);
+
+        }
+        console.log('数组中指定字符串出现了' + count + '次');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

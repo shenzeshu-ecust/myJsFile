@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .main {
+            box-sizing: border-box;
+            width: 800px;
+            height: 500px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+        
+        .header {
+            display: flex;
+            width: 100%;
+            height: 50px;
+            /* border-bottom: 1px solid #ccc; */
+        }
+        
+        .header ul li {
+            position: relative;
+            float: left;
+            width: 80px;
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+            background-color: #efefef;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            color: darkcyan;
+            font-weight: 700;
+            list-style: none;
+        }
+        
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            width: 12px;
+            height: 12px;
+            font-size: 12px;
+            line-height: 12px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, .3);
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            transform: scale(1.1);
+            background-color: skyblue;
+        }
+        
+        .tabadd {
+            float: right;
+            margin-top: 20px;
+            margin-right: 10px;
+            padding: 2px;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            font-size: 14px;
+            color: #333;
+            border: rgb(224, 218, 218) 2px solid;
+        }
+        
+        section {
+            display: none;
+        }
+        
+        .other {
+            flex: 1;
+            height: 50px;
+            border-bottom: #ccc 1px solid;
+        }
+        
+        .liactive {
+            border-bottom: 0 !important;
+            color: deeppink !important;
+        }
+        
+        .conactive {
+            display: block;
+            /* text-align: center; */
+            padding-top: 10px;
+            font-size: 18px;
+            color: cornflowerblue;
+            font-weight: 700;
+        }
+        
+        .header ul li span:first-child input {
+            width: 70px;
+            height: 20px;
+            outline: none;
+        }
+        
+        .content input {
+            width: 700px;
+            height: 400px;
+            margin: auto;
+            padding-top: 15px;
+            padding-left: 10px;
+            border: skyblue 1px solid;
+            outline: none;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <div class="header">
+            <!-- <div class="liactive">新闻</span></div>
+            <div id="li">实时<span class="close">X</span></div>
+            <div id="li">我的<span class="close">X</span></div> -->
+            <ul>
+                <li class="liactive"><span>新闻</span><span class="close">X</span></li>
+                <li><span>实时</span><span class="close">X</li>
+                <li><span>我的</span><span class="close">X</span></li>
+            </ul>
+            <div class="other"><span class="tabadd">+</span></div>
+        </div>
+        <div class="content">
+            <section class="conactive">news </section>
+            <section>live </section>
+            <section>profile </section>
+
+        </div>
+    </div>
+</body>
+<script src="./tab.js"></script>
+
+</html>

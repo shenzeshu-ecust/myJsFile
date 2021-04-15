@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 深层遍历
+        var data = [{
+            id: 1,
+            name: '家电',
+            goods: [{
+                id: 11,
+                gname: '冰箱',
+                goods: [{
+                    id: 111,
+                    gname: '海尔'
+                }, {
+                    id: 112,
+                    gname: '美的'
+                }]
+            }, {
+                id: 12,
+                gname: '洗衣机'
+            }]
+        }, {
+            id: 2,
+            name: '服饰'
+        }]
+
+
+        function getGoods(json, id) {
+            var o = {}
+            json.forEach(item => {
+                if (item.id == id) {
+                    // console.log(item);
+                    o = item
+                        // 如果在这里返回return item 返回给了 里面的函数，外面访问不到
+                } else if (item.goods && item.goods.length > 0) {
+                    o = getGoods(item.goods, id)
+                }
+            })
+            return o
+        }
+        var res1 = getGoods(data, 2)
+        console.log(res1);
+        var res2 = getGoods(data, 12)
+        console.log(res2);
+
+        var res3 = getGoods(data, 112)
+        console.log(res3);
+    </script>
+</body>
+
+</html>

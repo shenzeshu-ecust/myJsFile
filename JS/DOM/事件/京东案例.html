@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="search" name="" id="">
+    <script>
+        // 按下s，光标自动在搜索框内
+        // 判断用户是否按下s键：keyCode
+        // 获得光标：js中的 focus();
+        var search = document.querySelector('input');
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode === 83) {
+                search.focus();
+            }
+        })
+    </script>
+</body>
+
+</html>

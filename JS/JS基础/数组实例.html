@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 数组反转
+        var arr = ['red', 'blue', 'pink', 'yellow', 'purple'];
+        var newarr = [];
+        for (var index = arr.length - 1; index >= 0; index--) {
+            newarr[newarr.length] = arr[index];
+
+        }
+        console.log(newarr);
+
+        //冒泡排序
+        var arr1 = [2, 4, 3, 1, 9, 11];
+        var n = arr1.length;
+        for (var i = 0; i <= n - 1; i++) {
+            for (var j = 0; j <= n - i - 1; j++) {
+
+                if (arr1[j] > arr1[j + 1]) {
+                    var temp = arr1[j];
+
+                    arr1[j] = arr1[j + 1];
+                    arr1[j + 1] = temp;
+                }
+            }
+        }
+        console.log(arr1);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

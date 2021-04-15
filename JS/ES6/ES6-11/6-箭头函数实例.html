@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // 1 2s后盒子变色  想使用this做
+        //  法一 ： 外部保存this 
+        var box = document.getElementById('box')
+            // box.addEventListener('click', function() {
+            //     var that = this
+            //     setTimeout(function() {
+            //         // 这里不能纯用this  因为计时器指向window
+            //         that.style.background = 'pink'
+            //     }, 2000)
+            // })
+            // --------------- 法二 ()=> {} ----------------
+        box.addEventListener('click', function() {
+            // 这里的this 指向box
+            setTimeout(() => {
+                // 箭头函数保留this指向原来的环境
+                this.style.background = 'pink'
+            }, 2000)
+        });
+        // 2 筛选数组
+        const arr = [6, 11, 22, 8, 91]
+        const res = arr.filter(function(item) {
+            if (item % 2 == 0) {
+                return true
+            } else {
+                return false
+            }
+        })
+        console.log(res);
+        // 采用()=> {}
+        const result = arr.filter(item => item % 2 === 0)
+        console.log(result);
+        // ------------- 总结 -------------
+        // 箭头函数适合 与this 无关的回调： 定时器 数组的相关方法回调
+        // 箭头函数不适合 与this有关的回调：事件回调 对象的方法定义
+        let Person = {
+            name: 'wx',
+            sing: () => {
+                console.log('唱歌');
+                console.log(this); //指向外部window 而不是对象
+            },
+            dance: function() {
+                console.log('dancing');
+                // 用匿名函数指向Person对象
+                console.log(this); //{name: "wx", sing: ƒ, dance: ƒ}dance: ƒ ()name: "wx"sing: () => {…}__proto__: Object
+            }
+
+        }
+
+        Person.sing()
+        Person.dance()
+    </script>
+</body>
+
+</html>

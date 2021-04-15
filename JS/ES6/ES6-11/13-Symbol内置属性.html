@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Symbol 有些内置属性。可以用来设置其他对象的属性
+        class Person {
+            static[Symbol.hasInstance](param) {
+                console.log(param);
+                console.log('我被用来检测类型了');
+                return false; // return true |可以自定义检测的真假
+            }
+        }
+        let o = {
+                name: 'haha'
+            }
+            // 会自动调用
+        console.log(o instanceof Person); //false
+        // ----
+        const arr1 = [1, 2, 3]
+        const arr2 = [4, 5, 6]
+        console.log(arr2);
+        arr2[Symbol.isConcatSpreadable] = false; // 可以自己设置该内容是否可以在数组连接时被展开
+        console.log(arr1.concat(arr2)); // [1, 2, 3, Array(3)] 无法展开 arr2
+        // 还有其他很多
+    </script>
+</body>
+
+</html>

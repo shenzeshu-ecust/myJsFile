@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function promiseAll(promises) {
+            return new Promise(function(resolve, reject) {
+                //promises必须是一个数组
+                if (!(promises instanceof Array)) {
+                    throw new TypeError("promises must be an Array");
+                }
+                var len = promises.length,
+                    resolvedCount = 0,
+                    resolvedArray = new Array(len);
+                for (var i = 0; i < len; i++) {
+                    (function(i) {
+                        //如果元素不是 Promise 对象，则使用 Promise.resolve 转成 Promise 对象
+                        Promise.resolve(promises[i]).then(value => {
+                                resolvedCount++;
+                                resolvedArray[i] = value;
+                                if (resolvedCount == len) {
+                                    return resolve(resolvedArray);
+                                }
+                            }, re => {
+                                return reject(re);
+                            })
+                            .catch(re => {
+                                console.log(re);
+                            })
+                    })(i)
+                }
+            })
+        }
+
+
+        function promiseall(arr) {
+            return new Promise((resolve, reject) => {
+                if (!Array.isArray(arr)) throw new TypeError('arr must be an array')
+                let len = arr.length
+                let resolvedCount = 0
+                let resolvedArray = new Array(len)
+                for (let i = 0; i < len; i++) {
+                    Promise.resolve(arr[i]).then(value => {
+                            resolvedCount++
+                            resolvedArray[i] = value
+                            if (resolvedCount == len) {
+                                return resolve(resolvedArray)
+                            }
+                        }, err => {
+                            return reject(err)
+                        }
+
+                    )
+                }
+            })
+        }
+
+        function PromiseAll(arr) {
+            return new Promise((resolve, reject) => {
+                if (!Array.isArray(arr)) throw new TypeError("arr must be an array")
+                let len = arr.length
+                let resolvedCount = 0
+                let resolvedArray = new Array(len)
+                for (let i = 0; i < len; i++) {
+                    Promise.resolve(arr[i]).then(value => {
+                        resolvedCount++
+                        resolvedArray[i] = value
+                        if (len == resolvedCount) {
+                            return resolve(resolvedArray)
+                        }
+                    }, err => {
+                        return reject(err)
+                    })
+                }
+            })
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //------------------------------
+        // 1 Promise.allSettled([,,])
+        // 接收是一个数组参数：无论里面的promise对象成功与否 都返回成功
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('success 1')
+            })
+        }, 1000)
+        const p2 = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // resolve('success 2')
+                    reject('error ！')
+                })
+            }, 1000)
+            // 调用allSettled方法
+        let res1 = Promise.allSettled([p1, p2])
+        console.log(res1);
+        /*
+            [[PromiseState]]: "fulfilled"
+            [[PromiseResult]]: Array(2)
+            0: {status: "fulfilled", value: "success 1"}
+            1: {status: "fulfilled", value: "success 2"}
+            length: 2
+        */
+        // ------------------------------
+        // 2 Promise.all([,,])
+        // 接收是一个数组参数：是否成功取决于里面的promise对象成功与否  
+        // 成功有返回结果 不成功报错
+        let res2 = Promise.all([p1, p2])
+        console.log(res2);
+    </script>
+</body>
+
+</html>

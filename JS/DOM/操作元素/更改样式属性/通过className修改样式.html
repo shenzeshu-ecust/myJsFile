@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .first {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+        /* 重创一个类名，里面装样式 */
+        .change {
+            margin: 100px auto;
+            padding: 50px;
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+            color: coral;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- element.style方法只适合小修改 -->
+    <div class="first">
+        我是只猪头啊哈哈！
+    </div>
+    <script>
+        var div = document.querySelector('.first');
+        div.onclick = function() {
+            // className适合大范围修改样式
+            // 且 会覆盖掉源类名
+            // this.className = 'change';
+            //想要保留原类名：
+            this.className = 'first change';
+        }
+    </script>
+</body>
+
+</html>

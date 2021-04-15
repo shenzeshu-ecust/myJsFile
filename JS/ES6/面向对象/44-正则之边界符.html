@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 正则里面不用引号
+        var reg = /123/
+            // 此规则匹配包含123的就行
+        console.log(reg.test(1234)); //true
+        // 1 ^ 开头
+        var regexp = /^123/
+        console.log(regexp.test(1234)); //true
+        // 2 $ 结尾
+        var r = /123$/
+        console.log(r.test(4123)); //true
+        // 3 ^ $ 精确查找
+        var re = /^123$/
+        console.log(re.test(123)); //true
+        console.log(re.test(123123)); //false
+    </script>
+</body>
+
+</html>

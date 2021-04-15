@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            /* 定位 */
+            position: absolute;
+            left: 0;
+            top: 100px;
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: teal;
+        }
+    </style>
+</head>
+
+<body>
+    <button>move</button>
+    <span></span>
+    <script>
+        // 需要 对象和目标距离的参数
+        // 优化：1 ：bug：每个新对象都会开辟一个定时器 变量var *** 。占内存
+        //给不同元素添加不同计时器
+        // 利用var obj = {}
+        // obj.name = 'andy';
+        // 优化2：bug：当点击开始运动按钮后，多点击几次，方块运动的越来越快,因为开启了太多的定时器
+        // 解决方案：每次清除之前的计时器，只保留将要运行的那个定时器
+        function animate(obj, target) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                if (obj.offsetLeft >= target) {
+                    clearInterval(obj.timer);
+                }
+                obj.style.left = obj.offsetLeft + 1 + 'px';
+            }, 30);
+
+        }
+        // 调用
+        var span = document.querySelector('span');
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            animate(span, 300);
+
+        })
+    </script>
+</body>
+
+</html>

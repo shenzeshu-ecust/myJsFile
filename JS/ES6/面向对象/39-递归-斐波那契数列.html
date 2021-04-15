@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 斐波那契数列-兔子序列
+        // 1 1 2 3 5 8 13 21 ...
+        //  用户输入一个数字n 就可以 求出这个数字对应的值
+        function Farri(n) {
+            if (n == 1 || n == 2) {
+                return 1
+            }
+
+            return Farri(n - 1) + Farri(n - 2)
+
+        }
+        console.log(Farri(3));
+        console.log(Farri(6));
+    </script>
+</body>
+
+</html>

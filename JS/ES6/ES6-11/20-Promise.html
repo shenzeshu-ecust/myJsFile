@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Promise() 解决异步
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // let text = 'ajax请求';
+                // resolve(text) //传出结果
+                let err = '请求错误'
+                reject(err)
+            }, 2000)
+        })
+        p.then(function(value) {
+            console.log(value);
+        }, function(err) {
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

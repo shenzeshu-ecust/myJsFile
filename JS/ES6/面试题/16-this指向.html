@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var 会让全局变量挂载在window上
+        // let 如果是全局变量，在window上找不到。不会挂载在window上
+        let a = 2
+        let obj = {
+            a: 1,
+            b: function() {
+                console.log(this.a);
+            }
+        }
+        obj.b() //1 
+            // 在严格模式下，这种函数中的this等于undefined
+        setTimeout(obj.b, 0) // undefined
+            //------------- var ----------------------------
+        var c = 3
+        var objnew = {
+            c: 4,
+            d: function() {
+                console.log(this.c);
+            }
+        }
+        objnew.d() //4 
+        setTimeout(objnew.d, 0) //3   定时默认window是this。
+
+
+        const obj2 = {
+            a() { //a:function(){}
+                setTimeout(function() {
+                    console.log(this); //window
+                });
+                console.log('obj里的this是 ', this);
+                setTimeout(() => {
+                    console.log('obj里定时器-箭头函数的this', this); // !!!    obj
+                })
+            }
+        }
+        obj2.a()
+            // 
+        function my() {
+            console.log('arguments为', arguments);
+            console.log('arguments是数组吗', arguments instanceof Array);
+        }
+        my([1, 2])
+    </script>
+</body>
+
+</html>

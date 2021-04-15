@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //数组可以放任意数据类型 
+        // 法1：new Array()
+        var arr = new Array();
+        //法2:数组字面量创建
+        var arr2 = [1, 'haha', true]
+        console.log(arr2);
+        console.log(arr2[0]);
+        //------遍历----
+        for (i = 0; i < arr2.length; i++) {
+            console.log(arr2[i]);
+        }
+
+        //---------------------------
+        //新增数组元素
+        //1.修改length长度
+        var arr3 = ['red', 'blue', 'yellow'];
+        console.log(arr3.length);
+        arr3.length = 5; //修改
+        console.log(arr3);
+        console.log(arr3[3]); //默认undefined
+        console.log(arr3[4]);
+
+        //2.修改索引号
+        var arr4 = ['red', 'blue', 'yellow'];
+        arr4[3] = 'pink'; //追加
+        arr4[4] = 'black'; //追加
+        arr4[0] = 'purple'; //替换
+        console.log(arr4);
+
+        //----------------------------
+        //增添元素,循环方式,加入1-20
+        var arr5 = [];
+        for (var i = 0; i < 20; i++) {
+            arr5[i] = i + 1;
+        }
+        console.log(arr5);
+
+        //找出大于7的数加入newarray
+        //法1
+        var arr6 = [1, 5, 7, 8, 9, 56, 4, 67, 324, 23, 234];
+        var newarr = [];
+        var j = 0; //!!!!!!!!!
+        for (var i = 0; i < arr6.length; i++) {
+            if (arr6[i] > 7) {
+                newarr[j] = arr6[i];
+                j++; //!!!!!!!!!
+            }
+        }
+        console.log(newarr);
+
+        //法2 利用length
+        // var arr6 = [1, 5, 7, 8, 9, 56, 4, 67, 324, 23, 234];
+        // var newarr = [];
+
+        // for (var i = 0; i < arr6.length; i++) {
+        //     if (arr6[i] > 7) {
+        //         newarr[newarr.length] = arr6[i];//-------
+
+        //     }
+        // }
+        // console.log(newarr);
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

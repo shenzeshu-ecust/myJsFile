@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* g() {
+            var o = 1
+            yield o++
+            yield o++
+        }
+        let iter = g()
+        console.log(iter.next()); // 1 false
+
+        console.log(iter.next()); // 2 false
+
+        console.log(iter.next()); // undefined true
+        let o = 1
+        console.log(o++); // 1
+        // x= i++  先把i给x 后加1
+        // x= ++i 先加1后赋值给x
+    </script>
+</body>
+
+</html>

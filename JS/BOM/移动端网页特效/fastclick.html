@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: burlywood;
+        }
+    </style>
+    <!-- 插件：1引入 -->
+    <script src="./fastclick.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 2 使用方法代码复制进来，就可以让300ms延时取消了
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        // 3 使用
+        var div = document.querySelector('div');
+        div.addEventListener('click', function() {
+            alert('取消了！');
+        })
+    </script>
+</body>
+
+</html>

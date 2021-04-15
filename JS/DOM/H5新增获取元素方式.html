@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">盒子1</div>
+    <div class="box">盒子2</div>
+    <div id="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+    <script>
+        // 1 getElementsByClassName 根据类名获得某些元素集合
+        var boxes = document.getElementsByClassName('box');
+        console.log(boxes);
+        // 2 querySelector 返回指定选择器的第一个元素对象
+        // 需要加上符号:    . # 
+        var firstBox = document.querySelector('.box');
+        console.log(firstBox);
+        var nav = document.querySelector('#nav');
+        console.log(nav);
+        var li = document.querySelector('li');
+        console.log(li);
+        // 3 querySelectorAll() 选择所有元素对象集合
+        var allboxes = document.querySelectorAll('li');
+        var allclassboxes = document.querySelectorAll('.box');
+        console.log(allboxes);
+        console.log(allclassboxes);
+    </script>
+</body>
+
+</html>

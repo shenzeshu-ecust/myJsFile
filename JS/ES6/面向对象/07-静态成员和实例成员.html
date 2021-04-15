@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 构造函数中的属性和方法 我们称为成员 成员可以添加
+        function Star(name, age) {
+            // 1 实例成员就是 构造函数内部 通过this  添加的成员
+            this.name = name
+            this.age = age
+            this.sing = function() {
+                console.log('I can sing a song');
+            }
+
+        }
+        // 1.1 实例成员只能 通过实例化对象来访问
+        var ldh = new Star('刘德华', 60)
+        console.log(ldh.name + ' 的年龄是 ' + ldh.age);
+
+        // 2 静态成员 在构造函数本身上添加的成员
+        Star.gender = '男'
+            // 2.1 静态成员只能通过构造函数来访问
+        console.log(Star.gender);
+        // ----------------------------------------
+        // 构造函数 存在内存浪费的问题 
+        // 里面的方法每次都开辟新的内存空间
+        var zxy = new Star('张学友', 56)
+        console.log(ldh.sing === zxy.sing); // false 内存地址不同 指向的不是同一个
+    </script>
+</body>
+
+</html>

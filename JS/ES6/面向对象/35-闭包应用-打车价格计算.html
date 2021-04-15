@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 起步价13 （3km内都是起步价）
+        // 3km外 每过5km多加5元
+        // 堵车:多加10元
+        // ------------------
+        // 立即执行函数
+        var price = (function() {
+            var start = 13
+            var total = 0
+            return {
+                noblockPrice: function(n) {
+                    if (n <= 3) {
+                        total = 13
+                    } else {
+                        total = 13 + (n - 3) * 5
+                    }
+                    return total
+                },
+                blockPrice: function(flag) {
+                    return flag ? total + 10 : total
+                }
+            }
+        })()
+        var res1 = price.noblockPrice(1)
+        console.log(res1);
+        var res2 = price.noblockPrice(6)
+        console.log(res2);
+        var res3 = price.blockPrice(true)
+
+        console.log(res3);
+    </script>
+</body>
+
+</html>

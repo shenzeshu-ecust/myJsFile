@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Math对象
+        console.log(Math.PI);
+        console.log(Math.max(1, 99, 52));
+        console.log(Math.max()); //没有参数 返回-Infinity
+        console.log(Math.max(1, 'lala')); // 有非数字型，返回Nan
+        console.log(Math.abs(-1));
+        console.log(Math.abs('-1')); //  1 会隐式转换
+
+        console.log(Math.floor(1.8)); // 向下取整  1
+        console.log(Math.ceil(1.8)); // 向上取整  2
+        console.log(Math.round(1.8)); //四舍五入
+        console.log(Math.floor(-1.5)); // -1  遇到.5  往大了取(-1 > -2)
+        //--------------
+        //Math.random [0,1) 随机小数
+
+        //得到两个数之间的随机数，包含边界
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        console.log('随机数为 ' + getRandom(1, 10));
+
+        //随机点名
+        arr = ['李思思', '范思思', '虞美人', '秋香'];
+        var pickone = getRandom(0, arr.length - 1);
+        console.log('点到的美女是 ' + arr[pickone]);
+
+        
+
+
+
+
+
+
+        //封装自己的数学对象
+        var myMath = {
+            PI: 3.141592653,
+            max: function() {
+                var max = arguments[0];
+                for (let i = 1; i < arguments.length; i++) {
+                    if (max < arguments[i]) {
+                        max = arguments[i];
+                    }
+                }
+                return max;
+            }
+        }
+        console.log(myMath.PI);
+        console.log(myMath.max(1, 5, 99));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

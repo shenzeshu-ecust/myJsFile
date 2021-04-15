@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const handler = {
+            get: function(obj, prop) {
+                console.log('A value has been accessed');
+                return obj[prop];
+            },
+            set: function(obj, prop, value) {
+                console.log(`${prop} is being set to ${value}`);
+            }
+        }
+
+        const initialObj = {
+            id: 1,
+            name: 'Foo Bar'
+        }
+
+        const proxiedObj = new Proxy(initialObj, handler);
+
+        proxiedObj.age = 24
+        console.log(proxiedObj.id);
+
+        //------------
+        // 我们所需要做的就是给这个对象创建一个Proxy， 并覆盖get运算符来阻止我们访问id属性！
+
+        const handler1 = {
+            get: function(obj, prop) {
+                if (prop === 'id') { // Check if the id is being accessed
+                    throw new Error('Cannot access private properties!'); // Throw an error
+                } else {
+                    return obj[prop]; // If it's not the id property, return it as usual
+                }
+            }
+        }
+
+        const person1 = {
+            id: 1,
+            name: 'Foo Bar'
+        }
+
+        const proxiedPerson1 = new Proxy(person1, handler1);
+
+        console.log(proxiedPerson1.id);
+        //-------------
+        // 另一个极好的用例是校验。 通过设置set“ 拦截器”， 我们可以在设置值之前添加自定义验证。 如果该值不符合验证， 我们可以抛出一个错误！
+
+        const handler2 = {
+            set: function(obj, prop, value) {
+                if (typeof value !== 'string') {
+                    throw new Error('Only string values can be stored in this object!');
+                } else {
+                    obj[prop] = value;
+                }
+            }
+        }
+
+        const obj1 = {};
+
+        const proxiedObj2 = new Proxy(obj1, handler2);
+
+        console.log(proxiedObj2); // This will log an empty object
+        proxiedObj2.name = 'Foo Bar'; // This should be allowed
+        console.log(proxiedObj2); // This will log an object with the name property set
+
+        proxiedObj2.age = 24; // This will throw an error.
+    </script>
+</body>
+
+</html>

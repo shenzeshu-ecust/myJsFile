@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = `
+    <ul>
+        <li>
+            <a>肖生克的救赎</a>
+            <p>1994</p>
+        </li>
+        <li>
+            <a>阿甘正传</a>
+            <p>1997</p>
+        </li>
+    </ul> `
+        const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs //s 特殊字圆点  g 全局匹配 ？非贪婪
+            // 之前老办法采用while循环和str.exec()
+            // 这 里 采用 String.prototype.matchAll()
+        let res = str.matchAll(reg) // 返回的是一个可以迭代的对象————————可以使用扩展运算符 或者 for of
+        console.log(res);
+        // console.log([...res]);
+        for (let i of res) {
+            console.log(i[1]);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let fun = function() {
+        //     console.log('abc');
+        // }
+        // fun.call()
+        // fun.apply()
+        // let b = fun.bind()
+        // b()
+        // console.log(fun.bind());
+        let arr = [1, 2, 5, 1, 2, 5, 1]
+        let newArr = []
+        for (let item in arr) {
+            if (newArr.indexOf(arr[item]) < 0) {
+                newArr.push(arr[item])
+            }
+        }
+        console.log(newArr);
+        let newarr = []
+        let res = arr.filter(item => {
+            if (!newarr.includes(item)) {
+                newarr.push(item)
+            }
+        })
+        console.log(newarr);
+
+        function unique(arr) {
+            return arr.filter(function(item, index, arr) {
+                //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素
+                return arr.indexOf(item, 0) === index;
+            });
+        }
+
+        //----   includes 数组判断有无这个元素的方法 ---
+        const arrnew = [1, 2, 1, 5, 1, 9, 5, 7]
+        let result = []
+        for (let i in arrnew) {
+            if (!result.includes(arrnew[i])) {
+                result.push(arrnew[i])
+            }
+        }
+        console.log(result);
+        let str = 'haha hehe jiji'
+        console.log(undefined == null);
+
+        let papapa
+        console.log(papapa); //undefined
+    </script>
+</body>
+
+</html>

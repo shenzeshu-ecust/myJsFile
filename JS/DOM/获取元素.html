@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="time">2020/10/9</div>
+    <ul>
+        <li>你好呀1</li>
+        <li>你好呀2</li>
+        <li>你好呀3</li>
+        <li>你好呀4</li>
+    </ul>
+    <ol id="ol">
+        <li>你不好啊1</li>
+        <li>你不好啊2</li>
+        <li>你不好啊3</li>
+    </ol>
+    <script>
+        // 1 getElementById
+        // 由于文档页面从上往下加载，所以先得有标签，所以script写标签下面
+        // getElementById()中参数是大小写敏感的!!!字符串
+        // 返回的是一个对象
+        var timer = document.getElementById('time');
+        console.log(timer);
+        console.log(typeof timer);
+        // console.dir()可以返回元素对象，更好地查看其属性、方法
+        console.dir(timer);
+
+        //2 getElementsByTagName()
+        // 选中所有符合的标签
+        var lis = document.getElementsByTagName('li');
+        //返回的是伪数组。
+        console.log(lis);
+        // 选其中某个
+        console.log(lis[1]);
+        // 依次打印所有
+        for (let i = 0; i < lis.length; i++) {
+            console.log(lis[i]);
+        }
+        //就算没选中，返回的也是空伪数组！
+
+        // 3 element.getElementsByTagName('标签名')：父元素必须是指定单个！元素
+        // var ol = document.getElementsByTagName('ol');
+        // console.log(ol[0].getElementsByTagName('li'));
+        // 一般，先id选定某一个，再Tagname选一堆
+        var ol = document.getElementById('ol');
+        console.log(ol.getElementsByTagName('li'));
+    </script>
+</body>
+
+</html>

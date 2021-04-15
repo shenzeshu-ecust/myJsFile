@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //取余数%   用来判断是否可以被整除
+        console.log(3 % 5); //3
+
+        console.log(0.3 + 0.5);
+        console.log((0.3 + 0.5) == 0.8);
+
+        //前置递增 ++ 写在变量！前面
+        var x = 10;
+        ++x; //先加1，后返回值
+        console.log(x);
+        //后置递增
+        var y = 10;
+        y++; //先返回原值，后自加1 ==========用的多：单独一行；后置写法=========
+        console.log(y);
+        //先表达式返回原值，后自加1
+        var z = 10;
+        console.log(z++ + 10); //20   : 10+10
+        console.log(z); //11
+
+        var m = 10;
+        console.log(m++ + ++m); //10 + 12=22(m++  =10,这里m=11了，后++m，m=12)
+        console.log(m); //12
+
+
+
+        //--------------------------------
+        //比较运算符
+        console.log(3 >= 5); //false
+        //   ==   会默认转换数据类型
+        console.log(18 == '18'); //-----true------
+        console.log(18 != '18'); //-------false-----
+        //------全等  ===    ！==   要求数、类型一样
+        console.log(18 === '18'); //false
+
+        //----------双等要求值！一样，三等要求都（值、数据类型）一样-------
+
+
+        //---------------------逻辑运算符------------
+        console.log(3 > 5 && 3 < 6); //false   与
+        console.log(3 > 5 || 3 < 6); //true   或
+        //   ！ 非
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

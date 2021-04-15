@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = ['a', 'b', 'c', 'd']
+            // for... of 遍历数组（for of只能遍历有迭代器iterator的对象比如数组、arguments、Set、Map、String、TypeArray、NodeList
+        for (let item of arr) {
+            console.log(item); // for...of 中item返回键值。而for...in返回键名
+        }
+        // 迭代器 工作原理
+        // 创建一个指针对象，指向当前数据结构的起始位置
+        // 第一次调用对象的next方法，指针自动指向数据结构的第一个成员
+        // 不断调用next方法，指针一直往后移动，直到最后一个成员
+        // 每次调用next() 返回一个包含value和done属性的对象
+        console.log(arr);
+        console.log(arr[Symbol.iterator]);
+        console.log(arr[Symbol.iterator]());
+        let iterator = arr[Symbol.iterator]()
+        console.log(iterator.next()); // {value: "a", done: false}
+        console.log(iterator.next()); // {value: "b", done: false}
+        console.log(iterator.next()); // {value: "c", done: false}
+        console.log(iterator.next()); // {value: "d", done: false}
+        console.log(iterator.next()); // {value: undefined, done: true}
+    </script>
+</body>
+
+</html>

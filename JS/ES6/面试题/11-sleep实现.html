@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 法1  Promise
+        // function sleep(delay) {
+        //     return new Promise(resolve => {
+        //         console.log('1');
+        //         setTimeout(resolve, delay) //将延迟放在Promise里
+        //     })
+        // }
+        // sleep(5000).then(res => {
+        //         console.log(2); //5s后输出2
+        //     })
+        // 法2 async await
+        function sleepNew(delay) {
+            return new Promise(resolve => {
+                setTimeout(resolve, delay)
+            })
+        }
+        async function fn() {
+            var temp = await sleepNew(3000)
+            console.log(5); //延迟3s输出5
+            return temp
+        }
+        // fn()
+        // 法3 生成器
+        function* sleepAnother(delay) {
+
+                yield new Promise(resolve => {
+                    console.log(6);
+                    setTimeout(resolve, delay)
+                })
+            }
+            // console.log(sleepAnother().next());
+            // sleepAnother(3000).next().value.then(() => { // value 获得的就是yield产生的
+            //         console.log(7);
+            //     })
+            // 法4 while循环
+        function sleepWhile(ms) {
+            let start = Date.now()
+            let expires = start + ms
+            while (Date.now() < expires);
+            console.log(8);
+            return;
+
+        }
+        sleepWhile(5000)
+    </script>
+</body>
+
+</html>

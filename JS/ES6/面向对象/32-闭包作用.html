@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //可以 在函数外面 访问函数内部 变量
+        function fn() {
+            var num = 10
+
+            function func() {
+                console.log(num);
+            }
+            // func() 
+            return func //把func传出去
+        }
+        var f = fn() //但他会返回一个函数 所以可以调用
+        f()
+            // ===========================
+            //  闭包作用： 延伸了变量作用范围！
+    </script>
+</body>
+
+</html>

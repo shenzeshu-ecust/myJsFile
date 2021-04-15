@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 浅拷贝
+        // 法1 for in
+        function shallowdeep(t) {
+            if (typeof t !== 'object') return //非对象类型这里不拷贝
+            let result = t instanceof Array ? [] : {};
+            // for(let key in t) {
+            //     if(t.hasOwnProperty(key)) {
+            //         result[key] = t[key]
+            //     }
+            // }
+            for (let i in t) {
+                result[i] = t[i]
+            }
+            return result
+        }
+        // 法2 Object.assign(target,source)
+        let result = {}
+        Object.assign(result, t)
+
+
+        function shallowDeep(t) {
+            if (typeof t !== 'object') return
+            let res = t instanceof Array ? [] : {}
+            for (let i in t) {
+                if (t.hasOwnProperty(i)) {
+                    res[i] = t[i]
+                }
+            }
+            return res
+        }
+    </script>
+</body>
+
+</html>

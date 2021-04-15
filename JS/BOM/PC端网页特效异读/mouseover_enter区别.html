@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 300px;
+            height: 300px;
+            background-color: tan;
+        }
+        
+        .son {
+            height: 200px;
+            width: 200px;
+            background-color: thistle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        // 鼠标移动到元素上时就会触发mouseenter事件
+        // 差别是: mouseover 经过自身盒子触发，经过子盒子还是会触发
+        // mouseenter 只在经过自身触发
+        // 原因： mouseover 冒泡
+        //       mouseenter不会冒泡 mouseleave也不会冒泡
+        var son = document.querySelector('.son');
+        var father = document.querySelector('.father');
+        // father.addEventListener('mouseover', function() {
+        father.addEventListener('mouseenter', function() {
+            console.log('11');
+        })
+    </script>
+
+</body>
+
+</html>

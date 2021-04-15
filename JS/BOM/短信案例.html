@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    您的手机号码：<input type="number" name="" id="">
+    <button>发送</button>
+    <script>
+        // 点击按钮后，会禁用disabled属性。按钮暂时不能点击
+        // 同时按钮内容变化：还剩5s....  innerHTML
+        // 秒数一直在变化：setInterval()
+        // 定义一个变量，在定时器里一直递减
+        // 如果变量到0，重置按钮属性,停止计时器
+        var btn = document.querySelector('button');
+        var time = 5;
+
+        btn.addEventListener('click', function() {
+
+            this.disabled = true;
+
+            var timer = setInterval(function() {
+                if (time !== 0) {
+                    btn.innerHTML = "还剩" + time + "秒";
+                    time--;
+                } else {
+                    // 停止计时器
+                    clearInterval(timer);
+                    // 恢复按钮
+                    btn.disabled = false;
+                    btn.innerHTML = "发送";
+                    // 重置倒计时
+                    time = 5;
+                }
+
+
+            }, 1000)
+
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

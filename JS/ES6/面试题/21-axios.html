@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        function fetchGet(url, param) {
+            return new Promise((resolve, reject) => {
+                axios.get(url, {
+                    params: param
+                }).then(res => resolve(res), err => reject(err))
+            })
+        }
+
+        function fetchPost(url, params) {
+            return new Promise((resolve, reject) => {
+
+                axios.post(url, params).then(res => resolve(res), err => reject(err))
+            })
+        }
+
+
+        function fetchGet(url, params) {
+            return new Promise((resolve, reject) => {
+                axios.get(url, {
+                    params: params
+                }).then(value => {
+                    resolve(value)
+                }).catch(err => reject(err))
+            })
+        }
+        //----------------------------------------
+        // ========================axios测试=============================
+        // 内部Promise实现异步
+        // -------------------axios全局配置----------------
+        /*
+        axios.defaults.baseURL = 'http://123.207.32.32:8000'
+        axios.defaults.timeout = 1000 //ms 超时时间
+            // ------------------------------------------------
+            // axios({
+            //     url: 'http://123.207.32.32:8000/home/multidata',
+            //     method: 'get' //，默认就是get
+            // }).then(res => console.log(res))
+        axios({
+                url: '/home/data',
+                params: {
+                    type: 'pop',
+                    page: 1
+                }
+            }).then(res => console.log('带有query的get请求', res))
+            // axios的并发请求
+        axios.all([axios({
+                url: '/home/data',
+                params: {
+                    type: 'sell',
+                    page: 1
+                }
+            }), axios({
+                url: '/home/data',
+                params: {
+                    type: 'pop',
+                    page: 1
+                }
+            })]).then(results => {
+                console.log('并发请求：', results);
+            })
+            //  或者then(axios.spread((res1,res2)=>{
+            //  console.log(res1);console.log(res2)
+            //  }))
+
+            */
+        //    -----------------创建实例axios---------------
+        // const instance1 = axios.create({
+        //     baseURL: 'http://123.207.32.32:8000',
+        //     timeout: 1000,
+        //     // headers:
+        // })
+        // instance1({
+        //     url: '/home/data',
+        //     params: {
+        //         type: 'pop',
+        //         page: 1
+        //     }
+        // }).then((res) => console.log('实例axios的请求结果', res))
+        // ---------------------封装axios--------------------
+        import {
+            request
+        } from './network/request';
+        // request({
+        //     url: '/home/data',
+        //     params: {
+        //         type: 'pop',
+        //         page: 1
+        //     }
+        // }, (res) => {
+        //     console.log('封装', res);
+        // }, err => console.log(err))
+        // ---------------------------
+        // request({
+        //     config: {
+        //         url: '/home/data',
+        //         params: {
+        //             type: 'pop',
+        //             page: 1
+        //         }
+        //     },
+        //     success: function(res) {
+        //         console.log('参数为对象的axios封装', res);
+        //     },
+        //     failure: function(err) {
+        //         console.log(err);
+        //     }
+        // })
+        // -----------------------------
+        request({
+            url: '/home/data',
+            params: {
+                type: 'pop',
+                page: 1
+            }
+        }).then(res => console.log('new Promise方法', res)).catch(err => console.log(err))
+    </script>
+</body>
+
+</html>

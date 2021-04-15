@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="demo">
+        <div class="box">
+            haha
+            <span class="erweima">x</span>
+
+        </div>
+    </div>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+
+    </ul>
+    <script>
+        // 1 父节点 parentNode
+        var erweima = document.querySelector('.erweima');
+        //得到最近的一级父元素，找不到则返回null
+        console.dir(erweima);
+        console.log(erweima.parentNode);
+        // 2 子节点
+        // 2.1 childNodes 得到的是集合：包含了元素节点和文本节点(空格换行等)（nodeType = 1\3）
+        var ul = document.querySelector('ul');
+        console.log(ul.childNodes);
+        console.log(ul.childNodes[0].nodeType);
+        console.log(ul.childNodes[1].nodeType);
+
+        // 想要获得只有元素节点的需要if判断nodeType == 1
+        // 2.2 children  非标准，但工程中用的多；兼容性没问题
+        console.log(ul.children);
+    </script>
+</body>
+
+</html>

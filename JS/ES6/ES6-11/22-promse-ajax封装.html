@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 画三角 长宽为0； 一个有颜色 其他设置透明 */
+        
+        div {
+            width: 0;
+            height: 0;
+            border-top: olivedrab 20px solid;
+            border-bottom: greenyellow 20px solid;
+            border-left: orange 20px solid;
+            border-right: cadetblue 20px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', "https://api.apiopen.top/getJoke");
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                        resolve(xhr.response)
+                    } else {
+                        reject(xhr.status)
+                    }
+                }
+            }
+        })
+        p.then(value => {
+            console.log(value);
+        })
+
+
+        const pro = new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            xhr.open('get', '');
+            xhr.send()
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                        resolve(xhr.response)
+                    } else {
+                        reject(xhr.status)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

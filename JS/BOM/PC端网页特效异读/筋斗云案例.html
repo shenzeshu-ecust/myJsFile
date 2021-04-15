@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .nav {
+            position: relative;
+            margin: 100px auto;
+            width: 500px;
+            height: 50px;
+            background-color: seashell;
+        }
+        
+        .cloud {
+            /* 动画元素必须定位 */
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 83px;
+            height: 42px;
+            background: url(./cloud.gif) no-repeat;
+        }
+        
+        .nav ul {
+            /* 给了定位才不会挡住 */
+            position: relative;
+        }
+        
+        .nav ul li {
+            float: left;
+            height: 50px;
+            width: 60px;
+            line-height: 50px;
+            text-align: center;
+            margin: 0 10px;
+            color: black;
+        }
+        
+        .nav ul li a {
+            display: block;
+            width: 80px;
+            height: 50px;
+            color: black;
+        }
+        
+        .nav ul li a:hover {
+            color: blanchedalmond;
+        }
+    </style>
+    <script src="./animate.js">
+    </script>
+</head>
+
+<body>
+    <div class="nav">
+        <span class="cloud"></span>
+        <ul>
+            <li><a href="javascript:;">校园风采</a></li>
+            <li><a href="javascript:;">党员党校</a></li>
+            <li><a href="javascript:;">光荣岁月</a></li>
+            <li><a href="javascript:;">我写我想</a></li>
+            <li><a href="javascript:;">联系我们</a></li>
+            <li><a href="javascript:;">登陆官网</a></li>
+
+        </ul>
+
+    </div>
+
+    <script>
+        // 1 鼠标经过li 筋斗云到这个 位置
+        // 2 离开li 恢复到原来位置
+        // 3 点击li 留在这个li位置
+        var lis = document.querySelectorAll('li'); //注意是All
+        var cloud = document.querySelector('.cloud');
+        var current = 10; // 当前初始位置\ 10 是margin
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].addEventListener('mouseenter', function() {
+                // 当前li 距离左边的距离即为 目标距离
+                animate(cloud, this.offsetLeft);
+
+            })
+            lis[i].addEventListener('mouseleave', function() {
+                // 回到原点
+                animate(cloud, current); // 
+
+
+            })
+            lis[i].addEventListener('click', function() {
+                current = this.offsetLeft; //此时鼠标点击离开后，初始位置变为当前位置
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Star(name) {
+            this.name = name
+        }
+        // Star.prototype.age = '18'
+        Object.prototype.age = '30'
+        var Lily = new Star('Lily')
+            // Lily.age = '20'
+            // 查找规则：自己优先、层层往上
+        console.log(Lily.age);
+        // Object的原型有一个toString()方法 虽然 Star没有定义这个方法，但是通过原型链还是可以使用
+        console.log(Object.prototype);
+        console.log(Lily);
+        console.log(Star.prototype);
+        console.log(Lily.toString());
+        console.log(Star.toString());
+    </script>
+</body>
+
+</html>

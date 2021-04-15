@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    //                                  var m 声明一个变量！！！！！！！！！！！！
+    //变量应用：输入名字-输出名字
+    //var myname = prompt('Your name is :');  //一个输入框
+    // alert('your name is :'+ myname);
+
+
+    //                                  1声明多个变量:    ,
+    var yourid = 15,
+        address = 'Shanghai',
+        phonenumber = 110,
+        classname = 'one';
+
+    //                                  2 不声明直接使用会出错
+    // console.log(haha);
+
+    //                                  3不赋值 会出现未定义 undefined
+    var stu;
+    //console.log(stu);//undefined
+    //                                  4直接使用并赋值可以，但会变成>>>>>>>全局变量
+    //console.log(qq = 1287622558);
+
+
+    //            变量名不要用 name   。  命名法：驼峰法：myName
+
+    //============== JS的变量数据类型只有在   程序运行中，根据=右边的值来确定
+    var num = 10;
+    // js  变量的数据类型是动态的
+    var variable = 12;
+    variable = '你是谁';
+
+    // 数据类型： number(包括了int double.....) string null undefined boolean
+
+    // 1 八进制： 数字前加0
+    var x = 012;//10
+    //alert(x);
+    // 2 十六进制：数字前加0x
+    var y = 0xa1; //161
+    //alert(y);
+
+    // 3 输出最大值最小值
+    //console.log(Number.MAX_VALUE);
+    //console.log(Number.MIN_VALUE);
+
+    // 4 Infinity (无穷大/小)
+    //console.log(Infinity);
+    //console.log(Number.MAX_VALUE * 2);  //显示的是Infinity
+    //console.log(-Number.MAX_VALUE * 2);  //显示的是-Infinity
+    //console.log(-Infinity);
+    // 5 not a number (非数值)
+    //console.log('Hi' - 15);  //NaN
+    //console.log(NaN);
+    //=====================================================
+    // isNaN(); 判断是否为数字类型， 是则false
+    //console.log(isNaN(12)); //false
+    //console.log(isNaN('pink 老师')); //true
+
+    // JS字符串类型推荐单引号。HTML用双引号
+    // 嵌套：外双内单/外单内双
+    var str = '我是"Pink老师"哈哈哈哈';
+    console.log(str);
+
+    //字符串转义符  \63/
+    //   \t (tab缩进)  \"  \'  \n (换行) \b (blank空格)   \\  (\符号)
+    var str1 = '我是\n"Pink老师"\t哈哈哈哈';
+    console.log(str1);
+
+    // 检测字符串的长度 length
+    console.log(('我是一个帅哥').length)
+
+    //字符串拼接  +  （数值相加，字符相连）
+    console.log('12'+12); //1212
+    console.log(12+12);//24
+    console.log('杀了您'+778);//杀了您778
+
+    //字符拼接加强  '++'
+    var age = 18;
+    console.log('我的年龄是：' + age + '岁');
+    age +=1 ;
+    console.log('我的年龄是：' + age + '岁');
+
+    //交互案例
+    //yourage = prompt('请告诉我，你的年龄是：');
+    //alert('Hi,你的年龄是'+ yourage + '岁');
+
+    //布尔值:参与运算时 true=1 false=0
+    console.log(true + 1); //2
+    console.log(false + 1); //1
+    //undefined :未声明
+    var weee 
+    console.log(weee);
+    console.log(undefined + 'pink');//undefinedpink
+    console.log(undefined + 1);//NaN  
+    //null
+    var space = null;
+    console.log(space +'pink');// nullpink
+    console.log(space + 1); //1
+
+    console.log(true);//true
+
+    //===========================================
+    //typeof 类型
+    var timer = null;
+    console.log(typeof timer);//object类型
+    var vari = undefined;
+    console.log(typeof vari);//undefined
+
+    //prompt 取过来的值是：string类型
+    var agenum = prompt('your age is:');//输入的虽然是数字，但是转化成了string
+    console.log(typeof agenum); //string
+    console.log(agenum + '是字符啦');
+
+
+
+
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>

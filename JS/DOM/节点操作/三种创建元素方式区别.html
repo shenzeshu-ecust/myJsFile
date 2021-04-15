@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>确定</button>
+    <span>
+        1213
+    </span>
+    <p>abc</p>
+    <div class="inner">
+
+    </div>
+    <div class="create"></div>
+    <script>
+        // document.write() 很少用！
+        // 1 docment.write() 创建元素，如果页面文档流加载完毕，再调用这句会导致页面重绘
+        var btn = document.querySelector('button');
+        btn.onclick = function() {
+                document.write('<div>asdasda</div>');
+            }
+            // 2 innerHTML 创建元素：创建多个元素效率更高，但不要采用拼接字符串，而是用数组push加入形式
+        var inner = document.querySelector('.inner');
+        for (let i = 0; i < 10; i++) {
+            inner.innerHTML += '<a href="#">百度</a>';
+        }
+        // 效率更高如下
+        var arr = [];
+        for (let i = 0; i < 20; i++) {
+            arr.push('<a href="#">百度</a>');
+        }
+        inner.innerHTML = arr.join(''); // 将数组中的元素拼接
+        // 3 docment.createElement();创建元素。创建效率低一点，但是结构更清晰！
+        var create = document.querySelector('.create');
+        for (let i = 0; i < 10; i++) {
+            var a = document.createElement('a');
+            a.innerHTML = '腾讯';
+            a.href = '#';
+
+            create.appendChild(a);
+        }
+    </script>
+</body>
+
+</html>

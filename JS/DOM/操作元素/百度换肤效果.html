@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baidu换肤</title>
+    <style>
+        * {
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: url(./images/1.jpg) no-repeat center;
+        }
+        
+        .baidu {
+            margin: 100px auto;
+            padding: 0 10px;
+            width: 370px;
+            height: 80px;
+        }
+        
+        .baidu li {
+            float: left;
+            margin: 0 1px;
+            width: 85px;
+            height: 80px;
+            list-style: none;
+            background-color: skyblue;
+            cursor: pointer;
+        }
+        
+        .baidu li img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="baidu">
+        <li><img src="./images/1.jpg" alt=""></li>
+        <li><img src="./images/2.jpg" alt=""></li>
+        <li><img src="./images/3.jpg" alt=""></li>
+        <li><img src="./images/4.jpg" alt=""></li>
+    </ul>
+    <script>
+        var imgs = document.querySelector('.baidu').querySelectorAll('img');
+        for (let i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function() {
+                //把图片路劲this.src赋值给body的url就可以
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

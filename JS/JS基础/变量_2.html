@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //================类型转换================
+        //1.number > string   变量.toString()
+        var num = 10;
+        var str = num.toString();
+        console.log(typeof str);
+        console.log(typeof num);
+        //2.String()
+        console.log(typeof String(num));
+        //3.========利用+ 转换 (隐式转换)===========
+        console.log(
+            num + ''
+        );
+
+
+        //=====================================
+        //string > number
+       // var age = prompt('年龄：');
+        // 1.parseInt() 转化成整形
+        console.log(parseInt(age));
+        console.log(parseInt('3.9'));// 3
+
+        console.log(parseInt('120px'));// 120, 可以用来去单位
+        //2. parseFloat();浮点型
+        console.log(parseFloat('3.9'));// 3.9
+
+        console.log(parseFloat('120px'));//120
+        console.log(parseFloat('rem120px'));//NaN
+
+        //3.Number();
+        console.log(typeof Number('3456'));
+
+        //4.隐式转换 ：利用- / * 
+        console.log('123'-'120');  //3
+        console.log('2' * 4);  // 8
+        console.log('45' / '5'); // 9
+
+        //=================案例：计算年龄=============
+        var birthday = prompt('你的出身年份：');
+        var age = 2020 - Number(birthday); //也可以不加Number：隐式转换
+        alert('你的年龄是'+ age + '岁');
+
+        var year = prompt('你希望你几年后成功？');
+        var year_future = parseFloat(year);
+        var res = age + year_future;
+        alert('那时候你已'+ res +'岁了');
+
+        //--------------------------------
+        //转化成布尔类型
+        //代表空 否定的值会被转换成false，其余是true
+        console.log('空、否定的，转化成false----------------------');
+
+        console.log(Boolean(''));//false
+        console.log(Boolean(0));//false
+        console.log(Boolean(NaN));//false
+        console.log(Boolean(null));//false
+        console.log(Boolean(undefined));//false
+
+        console.log('其余都是转化成true----------------------');
+        console.log(Boolean('哈哈'));//true
+        console.log(Boolean(123));//true
+        console.log(Boolean('false'));//true
+
+        
+
+
+
+
+
+
+
+
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

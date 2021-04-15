@@ -1,0 +1,8 @@
+BOM 浏览器对象模型
+Browser Object Model
+提供了独立于内容而与 浏览器窗口 进行交互的对象，其核心对象是window
+BOM缺乏标准：js语法标准化组织：ECMA; dom：w3c; bom最初是Netscape浏览器标准的一部分
+
+window：1 是JS访问浏览器窗口的一个接口
+        2 是一个全局对象。定义在全局作用域的变量、函数都会变成window对象的属性和方法
+        在调用的时候可省略window：alert() = window.alert()

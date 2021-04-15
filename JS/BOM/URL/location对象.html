@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>跳转</button>
+    <script>
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            // location.assign('地址');也可以实现跳转，且可以返回原界面（记录浏览历史）
+            location.assign('http://www.baidu.com');
+            //location.replace('地址');实现跳转但是无法返回原地址；
+            location.replace('http://www.baidu.com');
+            //括号内false或者空 默认刷新（根据缓存：特点：快）；true：强制刷新（重新从网址服务器获得内容）
+            location.reload()
+        })
+    </script>
+</body>
+
+</html>

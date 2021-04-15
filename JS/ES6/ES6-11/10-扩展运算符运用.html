@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // 1 数组合并
+        // 1.1 ES5 concat
+        const arr1 = ['飞轮海', 'SHE']
+        const arr2 = ['凤凰传奇', '花儿乐队']
+        const band1 = arr1.concat(arr2)
+        console.log(band1);
+        // 1.2 ES6 ...
+        const band2 = [...arr1, ...arr2]
+        console.log(band2);
+        // 2 数组的克隆
+        const arr3 = ['E', 'M', 'G']
+        const arr4 = [...arr3]
+        console.log(arr4);
+        // 3 将伪数组转换成真数组
+        const divs = document.querySelectorAll('div')
+        const divsArr = [...divs]
+        console.log(divs); //伪数组 
+        console.log(divsArr);
+    </script>
+</body>
+
+</html>

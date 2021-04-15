@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>点我，会有惊喜！</li>
+        <li>点我，会有惊喜！</li>
+        <li>点我，会有惊喜！</li>
+        <li>点我，会有惊喜！</li>
+        <li>点我，会有惊喜！</li>
+    </ul>
+    <script>
+        // 循环给每个li添加事件效率差
+        // 委托核心原理：给父节点添加侦听器，利用事件冒泡影响每个子节点
+        // =================如果要改变样式属性，可以利用e.target获得事件对象=============
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+            alert('哈哈哈！');
+            //利用target属性判断点击了哪个
+            // e.target就是触发事件的标签，触发谁就是谁
+            // e.currentTarget就是绑定事件的标签，绑定哪个事件输出的就是该事件
+            e.target.style.backgroundColor = 'pink';
+        })
+    </script>
+</body>
+
+</html>

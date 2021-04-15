@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Phone(log, price) {
+            // 添加属性成员
+            this.log = log
+            this.price = price
+        }
+        // 添加方法
+        Phone.prototype.call = function() {
+                console.log('calling....');
+            }
+            // 实现继承属性 利用call 
+        function SmartPhone(log, price, color) {
+            Phone.call(this, log, price)
+            this.color = color
+        }
+        SmartPhone.prototype = new Phone; // ***** (这一步继承了实例方法)
+        // 防止SmartPhone.prototype被覆盖 要把构造器指回
+        SmartPhone.prototype.constructor = SmartPhone
+            // console.log(SmartPhone);
+        let apple = new SmartPhone('Apple', 5999, 'white');
+        console.log(apple);
+    </script>
+</body>
+
+</html>

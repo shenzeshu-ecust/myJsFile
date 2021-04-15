@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 应在script标签里加  type="module" -->
+    <!-- // as 别名 因为不许重名 所以起一个别名// as 别名 因为不许重名 所以起一个别名 -->
+    <!--  // 3 简化形式 ————只针对default默认暴露  -->
+    <script type="module">
+        // 1 通用的导入模块 // import * as m1 from './36-moduleTest.js'; // import * as m2 from './37-m2.js'; // import * as m3 from './38-m3.js'; // console.log(m1); // console.log(m2); // console.log(m3); // console.log(m3.default.name); //需要通过额外的属性访问 // 2 解构赋值形式
+        import { name, show } from './36-moduleTest.js'; import { school as campus, findJob } from './37-m2.js'; import { default as m3 } from './38-m3.js';import m33 from './38-m3.js'; console.log(name); console.log(m33);
+    </script>
+</body>
+
+</html>

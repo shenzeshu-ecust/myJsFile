@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Proxy 与 Reflect 是 ES6 为了操作对象引入的 API 。
+        // Proxy 可以对目标对象的读取、函数调用等操作进行拦截，然后进行操作处理。它不直接操作对象，而是像代理模式，通过对象的代理对象进行操作，在进行这些操作时，可以添加一些需要的额外操作。
+        // 一个 Proxy 对象由两个部分组成： target 、 handler 。在通过 Proxy 构造函数生成实例对象时，需要提供这两个参数。 target 即目标对象， handler 是一个对象，声明了代理 target 的指定行为。
+        // Reflect 可以用于获取目标对象的行为，它与 Object 类似，但是更易读，为操作对象提供了一种更优雅的方式。它的方法与 Proxy 是对应的。
+
+        let target = {
+            name: 'Tom',
+            age: 24
+        }
+        let handler = {
+            get: function(target, key) {
+                console.log('getting ' + key);
+                return target[key]; // 不是target.key
+            },
+            set: function(target, key, value) {
+                console.log('setting ' + key);
+                target[key] = value;
+            }
+        }
+        let proxy = new Proxy(target, handler)
+        console.log(proxy.name) // 实际执行 handler.get
+        proxy.age = 25 // 实际执行 handler.set
+            // getting name
+            // setting age
+            // 25
+        console.log(proxy.age);
+        // target 可以为空对象
+        let targetEpt = {}
+        let proxyEpt = new Proxy(targetEpt, handler)
+            // 调用 get 方法，此时目标对象为空，没有 name 属性
+        console.log(proxyEpt.name) // getting name
+            // 调用 set 方法，向目标对象中添加了 name 属性
+        proxyEpt.name = 'Tom'
+            // setting name
+            // "Tom"
+            // 再次调用 get ，此时已经存在 name 属性
+        console.log(proxyEpt.name)
+            // getting name
+            // "Tom"
+
+        // =========通过构造函数新建实例时其实是对目标对象进行了浅拷贝，因此目标对象与代理对象会互相影响！！！！！！
+        console.log(targetEpt.name)
+            // {name: "Tom"}
+
+        // handler 对象也可以为空，相当于不设置拦截操作，直接访问目标对象
+        let targetEmpty = {}
+        let proxyEmpty = new Proxy(targetEmpty, {})
+        proxyEmpty.name = "Tom"
+        targetEmpty.name // {name: "Tom"}
+
+
+        let handlerMy = {
+            set: function(o, k, v) {
+                o[k] = v
+            },
+            get: function(o, k) {
+                return o[k]
+            }
+        };
+        //------------------------------------------------------------------
+        //Reflect是ES6为了操作对象而新增的API, 为什么要添加Reflect对象呢？它这样设计的目的是为了什么？
+
+        // 1）将Object对象的一些明显属于语言内部的方法(比如Object.defineProperty)，放到Reflect对象上，那么以后我们就可以从Reflect对象上可以拿到语言内部的方法。
+
+        // 2）在使用对象的 Object.defineProperty(obj, name, {})时，如果出现异常的话，会抛出一个错误，需要使用try catch去捕获，但是使用 Reflect.defineProperty(obj, name, desc) 则会返回false。
+        // ————————————————
+        try {
+            Object.defineProperty(target, property, attributes);
+        } catch (e) {
+            // 失败
+        }
+
+        // 新写法
+        if (Reflect.defineProperty(target, property, attributes)) {
+            // success
+        } else {
+            // failure
+        }
+        // Reflect共有13个静态方法
+        /*该方法是用来读取一个对象的属性。
+参数如下解析：
+target: 目标对象
+name: 是我们要读取的属性。
+receiver(可选)： 可以理解为上下文this对象。*/
+        Reflect.get(target, name, receiver)
+        Reflect.set(target, name, value, receiver)
+            /*上面的get方法是获取对象中的值，那么set就是设置该对象的属性值了，参数解析简单如下：
+target: 我们需要操作的对象。
+name: 我们需要设置该对象的属性名。
+value: 我们要设置的属性值。
+receiver： 可以理解为上下文this对象。如果我们在设置值的时候遇到setter函数，该参数就指向与setter中上下文this对象。
+该函数会返回一个Boolean的值，代表在目标对象上设置属性是否成功。
+*/
+    </script>
+</body>
+
+</html>

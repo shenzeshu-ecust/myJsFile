@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Star(name) {
+            // 1 在构造函数中 this指向的是对象实例 ldh
+            this.name = name
+        }
+        var that
+        Star.prototype.sing = function() {
+            console.log('sing a song');
+            that = this
+                // 2 在原型对象函数里面的this 指向的也是 实例对象 ldh
+        }
+        var ldh = new Star('刘德华')
+        ldh.sing()
+        console.log(that);
+
+        console.log(that === ldh); // true
+    </script>
+</body>
+
+</html>

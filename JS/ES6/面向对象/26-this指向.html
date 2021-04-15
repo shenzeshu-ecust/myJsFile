@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>确定</button>
+    <script>
+        // 函数的不同调用方式 决定了this的不同指向
+        // 1 普通函数 指向window
+        function fn() {
+            console.log('普通函数this', this);
+        }
+        fn()
+        fn.call() //call()也可以实现调用！
+            // 2 对象方法 指向对象
+        var o = {
+            sayHi: function() {
+                console.log('对象this', this);
+            }
+        }
+        o.sayHi()
+            // 3 构造函数 指向实例对象;
+        function Star() {}
+        // 原型对象里this 也是指向实例
+        Star.prototype.sing = function() {
+            console.log(this);
+        }
+        var ldh = new Star(); //构造函数调用需要new
+        console.log('构造函数this' + this);
+        // 4 绑定事件函数 this 指向调用者button
+        var btn = document.querySelector('button')
+        btn.onclick = function() {
+                console.log(this);
+            } //点击触发
+            // 5 定时器函数 this指向window
+            // 定时器完整写法 window.setTimeout()
+        window.setTimeout(() => {
+            console.log('timer is on');
+            console.log('定时器this', this);
+        }, 1000); //到时间自动触发
+        // 6 立即执行函数 也是指向window !!!
+        (function() {
+            console.log('execute right now');
+        })() //立即执行函数会立即执行
+    </script>
+</body>
+
+</html>

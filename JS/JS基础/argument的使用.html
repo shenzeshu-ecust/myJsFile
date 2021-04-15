@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //-------只有函数有arguments对象------
+        //不确定有多少参数的时候使用arguments
+        //arguments伪数组：1具有数组长度length 2按照索引方式进行存储
+        //3 没有真正数组的一些方法  pop push 等
+        // function func() {
+        //     console.log(arguments); //arguments里面存储了所有传递过来的实参
+        //     console.log(arguments.length);
+        //     console.log(arguments[0]);
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         console.log(arguments[i]);
+        //     }
+        // }
+        // func(1, 2, 3);
+        // func(2, 6, 5, 7, 8);
+
+        //------- 取一组数的最大值-------（利用arguments）
+        function getMax() { // arguments = [1,6,8,4,95,5]
+            var max = arguments[0];
+            for (var i = 1; i < arguments.length; i++) {
+                if (max < arguments[i]) {
+                    max = arguments[i];
+                }
+
+            }
+            return max;
+        }
+
+
+        console.log(getMax(1, 6, 8, 4, 95, 5));
+        console.log(getMax(1, 100, 5)); ///        ()不是[]
+
+
+        //----------翻转数组----------
+        function reverse(arr) {
+            var newArray = [];
+            for (var i = arr.length - 1; i >= 0; i--) {
+                newArray[newArray.length] = arr[i];
+            }
+            return newArray;
+        }
+
+        console.log(reverse(["apple", "pineapple", "pear"]));
+        console.log(reverse([9, 8, 7, 6]));
+
+        //------排序---------
+        function sort(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {  //外循环：比较n-2次
+                for (var j = 0; j < arr.length - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+
+            }
+            return arr;
+        }
+
+        console.log(sort([5, 8, 7, 6, 1]));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

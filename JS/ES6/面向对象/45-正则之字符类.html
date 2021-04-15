@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 只要包含就行
+        var reg = /123/
+            // 字符类：[] 有一系列字符可以选择 只要匹配其中一个就行
+        var re = /[abc]/
+        console.log(re.test('andy')); // true
+        console.log(re.test('bank')); // true
+        console.log('-------------------');
+        // ^[]$只能选其中一个
+        var regExp = /^[abc]$/
+        console.log(regExp.test('andy')); //false
+        console.log(regExp.test('a')); //true
+        console.log(regExp.test('b')); //true
+        console.log(regExp.test('c')); //true
+        console.log('-------------------');
+
+        // -
+        var r = /^[a-z]$/
+        console.log(r.test('a')); // true
+        console.log(r.test('ab')); //false
+        console.log(r.test('z')); //true
+        console.log('-------------------');
+
+        //  组合 字母数字下划线横线加号都行
+        var rege = /^[a-zA-Z0-9_-]$/
+        console.log(rege.test('-')); //true
+        console.log(rege.test('7')); //true
+        console.log(rege.test('_')); //true
+        console.log('-------------------');
+        // [^] 方括号内 表示取反
+        var reg1 = /^[^a-z0-9]$/ //不能包含小写字母和数字
+        console.log(reg1.test('-')); //true
+        console.log(reg1.test('7')); //false
+        console.log(reg1.test('_')); //true
+    </script>
+</body>
+
+</html>

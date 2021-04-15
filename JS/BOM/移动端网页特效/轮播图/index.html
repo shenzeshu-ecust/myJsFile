@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .focus {
+            position: relative;
+            width: 100%;
+            height: 75px;
+            overflow: hidden;
+        }
+        
+        .focus ul {
+            /* 显示第一张 */
+            margin-left: -100%;
+            width: 500%;
+            height: 100%;
+        }
+        
+        .focus ul li {
+            float: left;
+            /* 父元素的五分之一 */
+            width: 20%;
+            height: 75px;
+            list-style: none;
+        }
+        
+        .focus ul li img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        ol {
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+        }
+        
+        ol li {
+            /* 转化为行内块元素，就不用设置边距了 */
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background-color: peachpuff;
+            list-style: none;
+            transition: all .3s;
+        }
+        
+        .current {
+            width: 15px;
+            background-color: chocolate;
+        }
+    </style>
+    <script src="./index.js"></script>
+</head>
+
+<body>
+    <div class="focus">
+        <ul>
+            <!-- 需要把最后一张图复制到第一个，否则右滑出现空白 -->
+            <li><img src="./focus3.jpg" alt=""></li>
+            <li><img src="./focus1.jpg" alt=""></li>
+            <li><img src="./focus2.jpg" alt=""></li>
+            <li><img src="./focus3.jpg" alt=""></li>
+            <li><img src="./focus1.jpg" alt=""></li>
+
+        </ul>
+        <ol>
+            <li class="current"></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+</body>
+
+</html>

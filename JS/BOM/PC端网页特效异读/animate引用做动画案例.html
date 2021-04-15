@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .bar {
+            position: absolute;
+            top: 100px;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            /* background-color: teal; */
+        }
+        
+        .bar span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-right: white 1px solid;
+            text-align: center;
+            background-color: teal;
+            font-size: 18px;
+            color: #fff;
+        }
+        
+        .con {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            padding-left: 15px;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            border-right: solid 1px #fff;
+            text-align: left;
+            color: #fff;
+            background-color: teal;
+        }
+    </style>
+    <script src="./animate.js"></script>
+</head>
+
+<body>
+    <div class="bar">
+        <span>←</span>
+        <div class="con"> 问题反馈</div>
+    </div>
+    <script>
+        var bar = document.querySelector('.bar');
+        var span = document.querySelector('span');
+        var con = document.querySelector('.con');
+        bar.addEventListener('mouseenter', function() {
+            //目标距离是负的：因为向左移动 ：距离 = con宽度 + span宽度
+            // 这里距离计算根据con的left值而计算
+            animate(con, -200, function() {
+                span.innerHTML = '→';
+            })
+        })
+        bar.addEventListener('mouseleave', function() {
+            //移动到距离有定位盒子的offsetLeft 50px距离处
+            animate(con, 50, function() {
+                span.innerHTML = '←';
+            })
+        })
+    </script>
+</body>
+
+</html>

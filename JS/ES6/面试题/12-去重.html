@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let array = [1, 2, 5, 1, 5, 112, 5, 1]
+            // 1 Set
+        let res1 = [...new Set(array)]
+        let res11 = Array.from(new Set(array))
+        console.log(res1);
+        console.log(res11);
+
+        // 2 indexOf()
+        let res2 = []
+        for (let i in array) {
+            if (res2.indexOf(array[i]) < 0) {
+                res2.push(array[i])
+            }
+        }
+        console.log(res2);
+        // 3 array.includes
+        let res3 = []
+        for (let i in array) {
+            if (!res3.includes(array[i])) {
+                res3.push(array[i])
+            }
+        }
+        console.log(res3);
+        // 4 filter
+        let res4 = array.filter((value, index, array) => array.indexOf(value) == index)
+        console.log(res4);
+
+
+
+
+        let myarr = [1, 1, 5, 12, 5, 1, 26, 1, 78, 1, 17, ]
+            // 1 indexOf/includes
+        let myresult = []
+        for (let i in myarr) {
+            // if (myresult.indexOf(myarr[i]) < 0) {
+            if (!myresult.includes(myarr[i])) {
+
+                myresult.push(myarr[i])
+            }
+        }
+        console.log('新结果为', myresult);
+        // 2 filter
+        let yourResult = myarr.filter((value, index, arr) => {
+            if (arr.indexOf(value) == index) return true
+
+        })
+        console.log('filter处理', yourResult);
+    </script>
+</body>
+
+</html>

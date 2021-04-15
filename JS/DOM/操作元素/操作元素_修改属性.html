@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="ldh">刘德华</button>
+    <button id="zxy">张学友</button>
+    <!-- <title>鼠标悬停时的文字 -->
+    <img src="./ldh.jpg" alt="" title="刘德华">
+    <script>
+        var ldh = document.getElementById('ldh');
+        var zxy = document.getElementById('zxy');
+        var img = document.querySelector('img');
+        ldh.onclick = function() {
+            img.src = './ldh.jpg';
+            img.title = '刘德华';
+
+        }
+        zxy.onclick = function() {
+            img.src = './zxy.jpg';
+            img.title = '张学友';
+        }
+    </script>
+</body>
+
+</html>

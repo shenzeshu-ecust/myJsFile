@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //if 
+        var age = prompt('你的年龄是：');
+
+        if (age >= 18) {
+            console.log('Come in')
+        }
+
+        // if else
+        if (age >= 18) {
+            alert('请进');
+        } else {
+            alert('您未满18周岁');
+        }
+
+        //-------------------
+        //判断闰年平年
+        //能被4整除且不能整除100的为闰年，或者能被400整除的也是闰年
+        var year = prompt('年份是');
+
+        result = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+
+        if (result) {
+            alert(year + '是闰年');
+        } else {
+            alert(year + '是平年');
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

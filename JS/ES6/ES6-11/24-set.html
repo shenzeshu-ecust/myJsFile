@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Set集合 包含不重复的元素
+        // 有iterator接口 可以解构 和 for... of
+        let s = new Set([1, 2, 3, 3, 4])
+        console.log(s, typeof s); // 会自动去重  'object'
+        // 1 元素个数
+        let num = s.size
+        console.log(num); // 4
+        // 2 添加元素 add
+        s.add('hahaha')
+        console.log(s);
+        // 3 删除元素 delete
+        s.delete(3)
+        console.log(s);
+        // 4 检测 has
+        console.log(s.has(2));
+        // 5 清空 clear
+        s.clear()
+        console.log(s);
+    </script>
+</body>
+
+</html>

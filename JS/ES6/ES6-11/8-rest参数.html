@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES5获取实参方式 
+        function test() {
+            console.log(arguments); //其实获得的是一个对象
+            console.log(typeof arguments); //object
+        }
+        test('周星驰', '吴孟达')
+            // ES6引入 rest参数 用于获取函数的实参 用来代替arguments
+        function test2(a, b, ...args) { //rest 参数必须放最后面
+            console.log(a);
+            console.log(args); // [3,4,5,6] 获得的是一个数组！ 可以使用filter 等方法
+            console.log(...args); // 3,4,5,6
+        }
+        test2(1, 2, 3, 4, 5, 6)
+    </script>
+</body>
+
+</html>

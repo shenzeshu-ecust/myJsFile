@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建对象的几种方式
+        // 1 利用new Object()
+        var obj1 = new Object()
+            // 2 利用字面量
+        var obj2 = {}
+            // 3 利用构造函数创建对象
+            // ES6之前没有类 利用构造函数保存共用的属性和方法
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sing = function() {
+                console.log('歌曲');
+            }
+        }
+        // new 在执行时 会做4件事
+        // 1 在内存中创建一个新的空对象
+        // 2 让this指向这个新对象
+        // 3 执行构造函数里的代码，给这个新对象添加属性、方法
+        // 4 返回这个新对象（所以构造函数里面不需要return）
+    </script>
+</body>
+
+</html>

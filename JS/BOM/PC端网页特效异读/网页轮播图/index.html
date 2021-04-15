@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .focus {
+            position: relative;
+            top: 100px;
+            margin: auto;
+            width: 721px;
+            height: 455px;
+            background-color: cadetblue;
+            overflow: hidden;
+        }
+        
+        .arrow {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: rgba(24, 8, 8, 0.3);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            z-index: 3;
+        }
+        
+        .arrow:hover {
+            color: salmon;
+        }
+        
+        .arrow-l {
+            left: 0;
+        }
+        
+        .arrow-r {
+            right: 0;
+        }
+        
+        .circle {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -75px;
+            padding-left: 20px;
+            width: 150px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .circle li {
+            float: left;
+            margin: 2px 5px;
+            height: 16px;
+            width: 16px;
+            background-color: skyblue;
+            border-radius: 8px;
+        }
+        
+        .focus ul {
+            /* 必须有定位才能使用动画效果 */
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 500%;
+            height: 100%;
+        }
+        
+        .focus ul li {
+            float: left;
+        }
+        /* 加个父盒子类名 不然权重不够 改不成颜色 */
+        
+        .circle .current {
+            background-color: salmon;
+        }
+    </style>
+    <!-- 动画js文件要先引入，因为index.js要引用 -->
+    <script src="../animate.js"></script>
+    <script src="./index.js"></script>
+</head>
+
+<body>
+    <div class="focus">
+        <a href="javascript:;" class="arrow-l arrow"> &lt;</a>
+        <a href="javascript:;" class="arrow-r arrow"> &gt;</a>
+        <ul>
+            <li>
+                <a href="#"><img src="./focus.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./focus1.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./focus2.jpg" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="./focus3.jpg" alt=""></a>
+            </li>
+        </ul>
+        <ol class="circle">
+
+        </ol>
+    </div>
+</body>
+
+</html>

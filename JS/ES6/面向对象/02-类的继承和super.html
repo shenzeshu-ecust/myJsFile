@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ----------- 1 ----------------
+        class Father {
+            constructor() {
+
+            }
+            money() {
+                console.log('i have 100yuan');
+            }
+        }
+        // 继承 extends
+        class Son extends Father {
+
+        }
+        // 调用继承自父类的money方法
+        // 首先创建son实例
+        let son = new Son();
+        son.money();
+        // ---------- 2 ----------------
+        // 子类无法继承父类的构造函数，但可以通过super()访问
+        class Father1 {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y
+            }
+            sum() {
+                // 注意this指向
+                console.log(this.x + this.y);
+            }
+        }
+        class Son1 extends Father1 {
+            constructor(x, y) {
+                // super() 调用父类中的构造函数，把参数x，y传给父类的constructor()
+                super(x, y)
+            }
+        }
+        let son1 = new Son1(1, 2);
+        son1.sum();
+        // ------------ 3 -------------------
+        // super也可以调用父类的 普通函数
+        class Father2 {
+            say() {
+                return '我是父亲'
+            }
+        }
+        class Son2 extends Father2 {
+            say() {
+                console.log(super.say() + '---------');
+
+            }
+        }
+        let son2 = new Son2();
+        son2.say();
+    </script>
+</body>
+
+</html>

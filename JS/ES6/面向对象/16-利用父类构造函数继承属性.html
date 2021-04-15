@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6之前没有提供extends继承。我们可以通过 构造函数+原型对象 模拟实现继承——称为组合继承
+        // 1 利用父构造函数继承属性
+        function Father(name, age) {
+            // 父类this 指向父类实例
+            this.name = name
+            this.age = age
+        }
+
+
+        function Son(name, age, score) {
+            // 子类this 指向子类的实例
+            // 子类想要继承父类的属性，就要调用父类。但是要改变父类this指向。使其指向子类——call
+            Father.call(this, name, age) // 调用父类构造函数，且指向子类实例，传入参数
+            this.score = score
+        }
+        var son = new Son('刘德华', 50, 100)
+        console.log(son);
+        console.log(son.name + son.score);
+    </script>
+</body>
+
+</html>

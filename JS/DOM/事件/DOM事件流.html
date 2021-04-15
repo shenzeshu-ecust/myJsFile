@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            box-sizing: border-box;
+            margin: 100px auto;
+            padding: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        // 事件发生时会在元素节点之间按照特定的顺序传播，这个传播过程叫做：DOM事件流
+        //1 JS代码中只能执行 捕获、冒泡其中一个阶段
+        //2 onclick 和attachEvent只能得到冒泡阶段。
+        //----------------------------------------------------------------------------------------------------
+        //3 addEventListener(type, listener[,useCapture])第三个参数如果是true，表示在    事件捕获
+        //  阶段调用事件处理程序； document > html > body > father > son
+        //如果是false(不写也默认为false)表示事件在   冒泡阶段   调用事件处理程序  son > father > body > html > document
+
+        //4 -------------实际开发过程中：更关注事件冒泡--------------
+        //5 有些事件没有冒泡：onblur onfocus onmouseenter onmuseleave
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+        // 点击的是son，但是先执行father ：因为捕获~
+        son.addEventListener('click', function() {
+            alert('son!');
+        }, true);
+        father.addEventListener('click', function() {
+            alert('father!');
+        }, true);
+
+        // 点击son，先显示son，但后来还是会出现father，因为冒泡时发现father也设定了点击事件！
+        son.addEventListener('click', function() {
+            alert('son!');
+        }, false);
+        father.addEventListener('click', function() {
+            alert('father!');
+        });
+        document.addEventListener('click', function() {
+            alert('document!');
+        });
+        // 这里没有注释掉捕获阶段，所以捕获冒泡全部执行一遍~
+    </script>
+</body>
+
+</html>

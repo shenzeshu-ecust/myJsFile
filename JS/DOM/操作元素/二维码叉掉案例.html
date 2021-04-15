@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>taobao</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 100px auto;
+            padding-top: 5px;
+            box-sizing: border-box;
+            width: 100px;
+            height: 150px;
+            /* background-color: pink; */
+            color: coral;
+            text-align: center;
+        }
+        
+        .box img {
+            margin-top: 5px;
+            width: 100%;
+        }
+        
+        .box i {
+            position: absolute;
+            top: 5px;
+            left: -16px;
+            width: 14px;
+            height: 14px;
+            border: coral 1px solid;
+            font-style: normal;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        手机客户端
+        <img src="./tao.png" alt="">
+        <!-- 装x的盒子 -->
+        <i class="close-btn">X</i>
+    </div>
+    <script>
+        var btn = document.querySelector('.close-btn');
+        var box = document.querySelector('.box');
+        btn.onclick = function() {
+            box.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

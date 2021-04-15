@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>已存在</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        // 1 创建节点元素节点 document.createElement('')
+        var li_create = document.createElement('li');
+        // 2 添加节点（在后面添加） node.appendChild(child)
+        ul.appendChild(li_create);
+        // 3 在某元素之前添加元素节点  node.insertBefore(添加的元素,指定元素)
+        var li2_create = document.createElement('li');
+        ul.insertBefore(li2_create, ul.children[0]);
+
+        // 总结：先创建元素，后添加元素
+    </script>
+</body>
+
+</html>

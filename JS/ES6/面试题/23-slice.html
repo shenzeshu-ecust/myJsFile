@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = ['nancy', 'lily', 'tom', 2222, 'jack']
+            // slice (start,[end)] 不包括end  不会修改原数组
+        console.log(arr.slice(1)) // [1, "tom", 2, "jack"]
+
+        console.log(arr.slice(1, 3)); //[1, "tom"]
+        // splice(index,num,item1,item2) 可添加可删除  num为删除的数目
+        // splice会修改原数组
+        arr.splice(2, 0, 'mily', 'smith') //不删除
+        console.log(arr);
+        console.log(arr.length);
+        arr.splice(1, 3, 'willian') //删除3个 加入willian
+        console.log(arr);
+    </script>
+</body>
+
+</html>

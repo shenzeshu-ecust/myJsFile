@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var name = 'hahaha '
+        var object = {
+            name: "MyObject",
+            getNameFunc: function() {
+                return function() {
+                    return this.name
+                }
+            }
+        }
+        var res = object.getNameFunc()()
+        console.log(res); //？输出什么
+        // 相当于
+        // 先看object.getNameFunc()
+        // var f = function() {
+        //         return this.name
+        //     }
+        // object.getNameFunc()()相当于
+        // f()
+        // 相当于一个立即执行函数，立即函数this指向window
+        // window中name为 'hahaha'
+        // ---------------------
+        var age = 88
+        var o = {
+            age: 99,
+            getAgeFunc: function() {
+                var that = this
+                console.log(this); // o 对象
+                return function() {
+                    return that.age
+                }
+            }
+        }
+        console.log(o.getAgeFunc()()); // 99
+        // 由于使用了闭包
+    </script>
+</body>
+
+</html>

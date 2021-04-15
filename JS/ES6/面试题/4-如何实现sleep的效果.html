@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 实现睡眠效果——————也就是延迟输出
+        // 1 采用Promise
+        function sleep(ms) {
+            return new Promise(resolve=> {
+                console.log(111);
+                setTimeout(()=> {
+                    resolve()
+                },ms)
+
+            })
+        }
+        // sleep(2000).then((v)=> {
+        //     console.log(222);
+        // })
+        // 2 async封装  延迟一秒输出333
+        function sleep1(ms) {
+            return new Promise(resolve=> {
+                setTimeout(resolve,ms)
+            })
+        }
+        async function test() {
+            
+           var temp =  await sleep1(1000)
+           console.log(333)
+           return temp; //async返回的一定是Promise对象
+        }
+        // test()
+        // 3 生成器generate
+        function* sleep2(ms) {
+            
+            yield new Promise(resolve=> {
+                console.log(111);
+                setTimeout(resolve,ms)
+            });
+           
+        }
+        let g = sleep2(3000)
+        g.next().value.then(()=> {   // g.next.value 就是yield后面的值
+            console.log(222);
+        })
+    </script>
+</body>
+</html>

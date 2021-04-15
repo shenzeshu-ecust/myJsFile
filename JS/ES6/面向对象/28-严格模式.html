@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    严格模式 ie10以上浏览器识别 旧版本会忽略 严格模式对正常的js语义做了一些更改：
+    <!-- 1 消除了js语法的一些不合理不严谨之处，减少了一些怪异行为  -->
+    <!-- 2 消除代码的一些不安全之处，保证代码的运行安全  -->
+    <!-- 3 提高编译器效率，增加运行速度  -->
+    <!-- 4 禁用了在ECMAScript的未来版本中可能会定义的一些语法，为未来新版本的js做好铺垫 
+        比如一些保留字class enum export extends import super不能做变量名 -->
+    <!-- 1 )为整个脚本 开启严格模式 -->
+    <script>
+        // 脚本严格模式
+        'use strict'
+        //
+    </script>
+    <script>
+        // 或者放在一个立即执行函数里
+        (function() {
+            'use strict'
+        })()
+    </script>
+    <!-- 2 ) 为某个函数开启严格模式 -->
+    <script>
+        function fn1() {
+            'use strict';
+            // 下面的代码开启严格模式
+        }
+
+        function fn2() {
+
+        }
+    </script>
+</body>
+
+</html>

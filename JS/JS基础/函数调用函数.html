@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //根据输入判断是年2月份有几天
+        function getDays() {
+            var year = prompt("请输入年份： ");
+            if (isRunYear(year)) {
+                alert("29天");
+
+            } else {
+                alert("28天");
+            }
+        }
+
+        function isRunYear(year) {
+            var flag = false;
+            if (year % 4 == 0 && year % 100 == 0 || year % 400 == 0) {
+                flag = true;
+            }
+            return flag;
+        }
+
+        //调用
+        getDays();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

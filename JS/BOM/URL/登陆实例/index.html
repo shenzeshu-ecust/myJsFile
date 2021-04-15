@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    主页
+    <div>
+        <!-- 利用location.search属性获得输入框内容。然后分割字符串 -->
+    </div>
+    <script>
+        // console.log(location.search); //  ?uname=asd
+        var str = location.search;
+        var str1 = str.substr(1); //从第二数到最后
+        // console.log(str1);
+        var prama = str1.split('=');
+        var name_final = prama[1];
+        // console.log(name_final); 
+        var div = document.querySelector('div');
+        div.innerHTML = '你好！' + name_final + '同学！';
+    </script>
+</body>
+
+</html>

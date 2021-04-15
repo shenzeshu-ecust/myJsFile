@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="nav" index="1"></div>
+    <script>
+        var div = document.querySelector('div');
+        //1)通过element.属性获得属性：这里只能获得元素自带属性
+        console.log(div.id);
+        //2)通过element.getAttribute('属性');这个还可以获得程序员的自定义属性
+        console.log(div.getAttribute('index'));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据索引index返回字符</title>
+    <script>
+        // str.charAt(index) 返回字符
+        str = 'jenny';
+        console.log(str.charAt(2));
+
+        // str.charCodeAt(index) 返回字符的ASCII码 ：用来判断用户按下了哪个键
+        console.log(str.charCodeAt(0));
+
+        //str[index]  H5新增
+        console.log(str[1]);
+
+        //---------------------
+        //对字符串出现的字母进行统计
+        var string = 'afggsgdheywrafajghmjkfpbbsgad';
+        var o = {}; //空的对象存储出现的字母key，次数value
+        for (let i = 0; i < string.length; i++) {
+            var word = string.charAt(i); //每个index对应的字母
+            if (o[word]) { //如果存在，加1
+                o[word]++;
+            } else { //如果不存在，则加入对象
+                o[word] = 1;
+            }
+        }
+        console.log(o);
+
+        //遍历对象
+        var ch = '';
+        var max = 0;
+        for (let k in o) {
+            if (max < o[k]) {
+                max = o[k];
+                ch = k;
+            }
+        }
+        console.log('出现最多的是 ' + ch + ' 且出现了' + max + '次');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

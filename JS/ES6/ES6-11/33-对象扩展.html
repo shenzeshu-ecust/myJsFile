@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 Object.is() 判断两个值是否相等
+        console.log(Object.is(120, 120)); // true
+        // 和全等类似 但是在NaN上不同
+        console.log(Object.is(NaN, NaN)); //true
+        console.log(NaN === NaN); //false
+        console.log(Object.is(+0, -0)); // false
+        // 2 Object.assign() 对象合并
+        const o1 = {
+            name: 'szs',
+            age: '25'
+        }
+        const o2 = {
+            name: 'hahaha',
+            class: 2
+
+        }
+        let res = Object.assign(o1, o2) //后者覆盖前者，后者没有的属性不会覆盖，前者没有后者有的会添加
+        console.log(res);
+        //  3 Object.setPrototypeOf()  设置原型对象  —————— 一般不推荐这个方法
+        const school = {
+            name: '清华'
+        }
+        const cities = {
+            place: ['北京', '上海']
+        }
+        Object.setPrototypeOf(school, cities)
+        console.log(school);
+        // 4 Object.getPrototypeof() 获取原型对象  
+        let res2 = Object.getPrototypeOf(school)
+        console.log(res2);
+        // Object.getPrototypeOf()
+    </script>
+</body>
+
+</html>

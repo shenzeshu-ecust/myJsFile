@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // reduce -------计算书总价格
+        let book = [{
+            num: 2,
+            price: 35
+        }, {
+            num: 3,
+            price: 15
+        }, {
+            num: 1,
+            price: 8
+        }, {
+            num: 3,
+            price: 2
+        }]
+        let lastPayNum = book.reduce((pre, cur) => {
+                return pre + cur.num * cur.price
+            }, 0) // 第二个参数是初始值
+        console.log('总价', lastPayNum);
+    </script>
+</body>
+
+</html>

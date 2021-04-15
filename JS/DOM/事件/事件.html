@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">唐伯虎</button>
+    <script>
+        // 点击一个按钮，触发对话框
+        // 事件三部分组成： 事件源（通过获取对象的方式） 事件类型（怎么触发：按下、经过？） 事件处理程序
+
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            alert('点秋香！');
+        }
+    </script>
+</body>
+
+</html>

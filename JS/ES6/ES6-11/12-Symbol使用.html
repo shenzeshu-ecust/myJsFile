@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Symbol 用来添加独一无二的对象
+        let people = {
+                sing() {
+                    console.log(' i can sing');
+                },
+                dance() {
+                    console.log(' i can dance');
+                }
+            }
+            // 1
+            // 声明一个对象
+        let methods = {
+            sing: Symbol(),
+            dance: Symbol()
+
+        }
+        people[methods.sing] = function() {
+            console.log(' you are a singer');
+        }
+        people[methods.dance] = function() {
+            console.log(' you are a dancer');
+        }
+        console.log(people);
+        people[methods.sing]() //        调用
+        // 2 
+        let youxi = {
+            name: '狼人杀',
+            [Symbol('say')]: function() {
+                console.log('i can say sth');
+                return 'ok'
+            },
+            [Symbol('explode')]: function() {
+                console.log(' i can explode');
+            }
+        }
+        console.log(youxi);
+        
+        
+    </script>
+</body>
+
+</html>

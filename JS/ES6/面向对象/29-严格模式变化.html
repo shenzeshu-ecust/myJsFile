@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        // 1 变量名必须先声明 再使用
+        // num = 10;
+        var num = 10
+        console.log(num);
+        // 2 不允许随便删除已存在的变量
+        // delete num;
+        // 3 this指向
+        function fn1() {
+            console.log(this); //普通模式指向window
+            // ========================严格模式下全局作用域中的this是undefined==========================
+        }
+        // fn1()
+        // 4 严格模式下 如果构造函数不加new 会报错————因为没有new，this指向了undefined
+        function Star() {
+            this.name = '刘德华'
+        }
+        // Star()
+        var l = new Star(); // this指向了l实例
+        // 5 定时器里面的this 指向还是window
+        // 因为其实定时器都是 window.setTimeout
+        setTimeout(function() {
+                console.log(this); //window
+            }, 500)
+            // 6 事件、对象还是指向调用者
+            // 7 严格模式下 函数里面的参数不许重名
+            // function fn2(a, a) {
+            //     console.log(a + a);
+            // }
+            // fn2(1, 2) //在非严格模式下 输出4 因为a=1会被覆盖
+            // 8 函数必须声明在顶层 
+            // 在新版本的js中会引入块级作用域 ，为了和新版本接轨，不允许在非函数的代码块内声明函数
+            // if (true) {
+            //     function add() {} //语法错误
+            //     add()
+            // }
+        function baz() {
+            function ed() {} //合法
+        }
+    </script>
+</body>
+
+</html>

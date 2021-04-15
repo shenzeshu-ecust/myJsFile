@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        table {
+            width: 450px;
+            margin: 100px auto;
+            /* 前者水平间距，后者垂直间距 */
+            border-spacing: 10px 15px;
+            border: gray 1px solid
+        }
+        
+        tr {
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead id="fir">
+            <tr>
+                <th><input type="checkbox" name="" id=""></th>
+                <th>商品名</th>
+                <th>价格</th>
+
+            </tr>
+        </thead>
+        <tbody id="sec">
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iPhone12</td>
+                <td>$699</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>iPadPro</td>
+                <td>$799</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="" id=""></td>
+                <td>AirPods pro</td>
+                <td>$199</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // 1 全选按钮效果实现：让下面的按钮checked状态（true false）跟随上面的全选按钮状态;
+        // 2 下面的复选框全部选中，上面的全选才能选中；给下面的复选框按钮绑定事件，每次点击都要判断下面的复选框有无都被选中。
+        // 3 可以设置一个变量，来控制全选是否选中
+        var fir = document.getElementById('fir').querySelector('input');
+        var sec = document.getElementById('sec').getElementsByTagName('input');
+        //全选效果实现
+        fir.onclick = function() {
+                for (let i = 0; i < sec.length; i++) {
+                    sec[i].checked = this.checked;
+                }
+
+            }
+            //单选影响全选效果实现
+            //这个循环为了给每个checkbox注册事件
+        for (let i = 0; i < sec.length; i++) {
+            sec[i].onclick = function() {
+                //标志位：是否都选中了
+                var flag = true;
+                //每次点击下面的复选框，就判断是否有复选框没被选中
+                for (let i = 0; i < sec.length; i++) {
+                    if (!sec[i].checked) {
+                        flag = false;
+                        break; //有未选中的，下面无须执行，提升效率
+                    }
+                }
+                fir.checked = flag;
+            }
+        }
+    </script>
+</body>
+
+</html>

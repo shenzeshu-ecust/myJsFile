@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Animal(name) {
+            this.name = name || 'Animal'
+        }
+        Animal.prototype.bark = function() {
+            console.log('miao~');
+        }
+
+        function Cat(name) {
+            Animal.call(this, name) // ---------需要传参数进入！！
+
+        }
+        // Cat.prototype = new Animal()
+        // Cat.prototype.constructor = Cat
+        // 组合继承
+
+        // 寄生组合
+
+        var Super = function() {}
+        Super.prototype = Animal.prototype
+        Cat.prototype = new Super()
+
+        var cat = new Cat('小黑猫')
+        console.log(cat);
+        console.log(cat.name);
+        cat.bark()
+    </script>
+</body>
+
+</html>

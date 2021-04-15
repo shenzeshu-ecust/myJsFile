@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <span></span>
+    <script>
+        //---------------兄弟元素用的少-------------
+        var div = document.querySelector('div');
+        // 1 nextSibling 兄弟节点：包括了元素和文本节点
+        console.log(div.nextSibling); //下一个
+        console.log(div.previousSibling); // 上一个
+        // 2 nextElementSibling 兄弟元素：只包含元素节点
+        //兼容性问题  哈哈哈
+        console.log(div.nextElementSibling);
+        console.log(div.previousElementSibling);
+        // 3 封装一个兼容性函数
+        function getNextElementSibling(element) {
+            var el = element;
+            //如果存在下一个兄弟元素
+            while (el = el.nextSibling) {
+                // 是元素节点则返回
+                if (el.nodeType === 1) {
+                    return el;
+                }
+            }
+            //不存在
+            return null;
+        }
+    </script>
+</body>
+
+</html>

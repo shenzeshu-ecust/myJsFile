@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是你爹</li>
+        <li>我是你马</li>
+        <li>我是你朋友</li>
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        // node.cloneNode() 克隆节点、复制节点
+        // 如果括号内为空或者false，则为浅拷贝：只复制节点本身，不复制里面的子节点
+        var li_clone = ul.children[0].cloneNode();
+        // 添加节点
+        ul.appendChild(li_clone);
+        // 如果括号内为true，则为深拷贝：复制节点本身，也复制里面的子节点
+        var li_clone2 = ul.children[1].cloneNode(true);
+        ul.appendChild(li_clone2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型————原型是一个对象 我们称prototype为原型对象
+        // 原型对象每个 构造函数都有，指向另一个对象。 这个对象所有的属性和方法 都会被构造函数所拥有
+        // 我们把那些不变的方法 直接定义在原型上 这样所有的实例对象 都可以共用这些方法
+        function Star(name, age) {
+            //     1 一般情况下 我们公共属性定义到构造函数里
+            this.name = name
+            this.age = age
+
+
+        }
+        // 2 原型作用 —— 共享方法！
+        // 公共的方法放原型对象上
+        Star.prototype.sing = function() {
+            console.log('sing a song');
+        }
+        var l = new Star('刘德华', 50)
+        var z = new Star('张学友', 50)
+
+        l.sing()
+        console.log(l.sing === z.sing); // true 指向同一个方法
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //创建数组
+        // 1 利用数组字面量
+        var arr = [1, 5, 99];
+        console.log(arr[1]);
+
+        // 2 利用 new Array()
+        var arr1 = new Array();
+        var arr2 = new Array(2); // 创建数组长度为2 的 空 数组
+        var arr3 = new Array(3, 4); // 这种才是 创建有[3,4]的一个数组
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr3);
+
+        // 判断是否为数组
+        // 1 instanceof 运算符
+        var arr4 = new Array();
+        var obj = {};
+        console.log(arr4 instanceof Array);
+        console.log(obj instanceof Array);
+
+        // 2 Array.isArray(参数)  ; H5新增，ie9以上版本支持
+        console.log(Array.isArray(arr4));
+        console.log(Array.isArray(obj));
+
+        //添加数组元素的方法
+        //1 push()  在数组末尾添加元素。会改变原数组
+        arr.push(100, '尼玛');
+        console.log(arr);
+        console.log(arr.push(21)); // 有返回值，返回的是当前数组长度length
+        console.log(arr);
+
+        //2 unshift() 在数组的开头添加元素
+        arr.unshift(1024, 'red');
+        console.log(arr);
+        console.log(arr.unshift(9)); // 返回的是当前数组长度length
+        console.log(arr);
+
+        //删除元素的方法
+        // 1 pop() 删除最后一个元素：一次只能删一个
+        arr.pop(); //  ()内不写参数
+        console.log(arr);
+        console.log(arr.pop()); //返回的是删除的那个元素
+        console.log(arr); // 原数组被改变
+
+        // 2 shift()  删除开头的元素:一次只能删一个
+        arr.shift(); //()不写参数
+        console.log(arr);
+        console.log(arr.shift()); //返回的是被删除的那个元素
+        console.log(arr); // 原数组被改变
+
+
+        //----------------
+        // 案例 筛选数组元素进入新的数组
+        var arr5 = [100, 200, 300, 500, 400, 900];
+        var arr6 = [];
+        for (let i = 0; i < arr5.length; i++) {
+            if (arr5[i] < 250) {
+                arr6.push(arr5[i]); //使用push()添加元素进新的数组
+            }
+        }
+        console.log('小于250的新数组为：' + arr6);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

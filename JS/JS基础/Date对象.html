@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Date 是构造函数，必须new 使用
+        var date = new Date(); //不带参数，返回当前年月日
+        console.log(date);
+
+        //带参数，可使用数字型2019,10,1  或者字符串型：'2019-9-9 8:8:8'
+        var date1 = new Date('2019-8-1 10:10:10');
+        console.log('字符串型的时间 ' + date1);
+
+        var date2 = new Date(2019, 10, 1);
+        console.log('数字型时间 ' + date2); //显示的是11月。比本身大一月
+
+        //--------日期格式化
+        //1 年月日
+        console.log(date.getFullYear()); //返回当前的年份
+        console.log(date.getMonth() + 1); //返回当前月份的前一月（总共是返回1-11月），所以想返回本月需要+1.
+        console.log(date.getDate()); // 几号
+        console.log(date.getDay); //周几。周日到周六：0-6！
+        //---------写一个中国人习惯的日期格式：采用拼接方式
+        year = date.getFullYear();
+        month = date.getMonth() + 1;
+        dates = date.getDate();
+        var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        var day = date.getDay();
+        var final_date = '今天是' + year + '年' + month + '月' + dates + '号 ' + arr[day];
+        console.log(final_date);
+
+        //2 时分秒   对于不满10的位需要用0补足实现01:11:09
+        function getTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+
+            h = h < 10 ? '0' + h : h; //--------------!!!----------
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            var hms = '现在是' + h + ':' + m + ':' + s;
+            return hms;
+        }
+        console.log(getTime());
+
+        //--------------------------
+        //获得Date总的毫秒数（时间戳）；距离1970-1-1过了多少毫秒
+        // 1 通过valueOf()、getTime()
+        console.log(date.valueOf());
+        console.log(date.getTime());
+        // 2 通过简单的方法  (最常用的！)
+        var date3 = +new Date(); // +new Date()
+        console.log(date3);
+        // 3 H5新增的
+        console.log(Date.now());
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

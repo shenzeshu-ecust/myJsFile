@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // map 键值对的集合
+        // 键名不限于字符串
+        // 实现了迭代器iterator接口 可以扩展运算符... 也可以for..of
+        let m = new Map();
+        // 1 添加元素 set
+        m.set('name', '沈泽庶')
+        m.set('change', function() {
+            console.log('I can make it!');
+        });
+        // 可以用对象当键名
+        m.set({
+            school: "ECUST"
+        }, ['kongzhi',
+            'xinyuan'
+        ])
+        console.log(m);
+        // 2 大小 size
+        console.log(m.size);
+        // 3 删除 delete
+        m.delete('name')
+        console.log(m);
+        // 4 获取 get
+        console.log(m.get('change'));
+        //    5 清空 clear
+        m.clear()
+        console.log(m);
+    </script>
+</body>
+
+</html>

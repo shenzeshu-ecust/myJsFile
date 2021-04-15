@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bar {
+            margin: 100px 200px;
+            width: 0px;
+            height: 20px;
+            background-color: cadetblue;
+            color: cornsilk;
+        }
+        
+        button {
+            position: absolute;
+            left: 200px;
+            top: 220px;
+            width: 70px;
+            height: 30px;
+            border: none;
+            background-color: coral;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            border-radius: 5px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bar"></div>
+    <button>走起来！</button>
+    <script>
+        var bar = document.getElementsByClassName('bar')[0]
+        var btn = document.getElementsByTagName('button')[0]
+        var timer
+        btn.onclick = function() {
+            // 每次点击刚开始都要复位———— 宽度0 且定时器清除
+            bar.style.width = '0' + 'px'
+            cancelAnimationFrame(timer);
+            // requestAnimationFrame(fn)  传入一个函数 并且不需要延迟时间参数
+            timer = requestAnimationFrame(function fn() {
+                if (parseInt(bar.style.width) < 500) {
+                    bar.style.width = parseInt(bar.style.width) + 5 + 'px'
+                        // 500px / 5 100%最终
+                        // console.log(typeof bar.style.width); //string  100px
+                    bar.innerHTML = parseInt(bar.style.width) / 5 + '%'
+                    timer = requestAnimationFrame(fn)
+                } else {
+                    cancelAnimationFrame(timer)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

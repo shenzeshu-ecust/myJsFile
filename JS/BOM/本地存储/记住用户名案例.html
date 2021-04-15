@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="username">
+    <input type="checkbox" name="" id="remember">记住用户名
+    <script>
+        // 用到localStorage
+        var username = document.querySelector('#username');
+        var remember = document.querySelector('#remember');
+        // 如果localStorage存有用户名，则把他给文本框，并勾选复选框
+        if (localStorage.getItem('uname')) {
+            username.value = localStorage.getItem('uname');
+            remember.checked = true;
+        }
+        remember.addEventListener('change', function() {
+            if (this.checked) {
+                //    如果勾选了 就保存下来
+                localStorage.setItem('uname', username.value);
+            } else {
+                //    没勾选 删除
+                localStorage.removeItem('uname');
+            }
+        })
+    </script>
+</body>
+
+</html>

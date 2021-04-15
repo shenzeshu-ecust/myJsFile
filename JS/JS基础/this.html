@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var person1 = {
+            fullname: function() {
+                //注意  this.     !!
+                return this.firstname + ' ' + this.lastname;
+            }
+        }
+        var person2 = {
+            firstname: 'Mike',
+            lastname: 'Doe',
+        }
+        var name = person1.fullname.call(person2);
+        console.log(name);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

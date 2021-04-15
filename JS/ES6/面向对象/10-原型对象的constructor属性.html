@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //----------------------------- constructor 属性 -------------------------
+        // 对象原型__proto__ 和构造函数原型对象prototype 里面都有一个属性： constructor。我们称之为构造函数 因为它指回构造函数本身
+        // ldh.__proto__.constructor   Star.prototype.constructor
+        // constructor 主要用于记录该对象引用于 哪个构造函数，它可以让原型对象重新指向原来的构造函数
+        function Star(name) {
+            this.name = name
+        }
+        // 如果以对象方式给原型添加多个方法
+        Star.prototype = {
+
+            // 如果不指明构造函数，那么这就相当于把原来Star的原型对象覆盖掉了，导致最终Star的原型的构造函数属性和对象原型的构造函数属性都为Object
+            // 所以：----------我们需要手动的利用constructor属性 指回 原来的构造函数-------------------
+            constructor: Star,
+            sing: function() {
+                console.log('sing');
+            },
+            playMovie: function() {
+                console.log('movie');
+            }
+        }
+        var ldh = new Star('刘德华')
+        console.log(ldh.__proto__);
+        console.log(Star.prototype);
+        // 都是Star构造函数
+        console.log(ldh.__proto__.constructor);
+        console.log(Star.prototype.constructor);
+    </script>
+</body>
+
+</html>

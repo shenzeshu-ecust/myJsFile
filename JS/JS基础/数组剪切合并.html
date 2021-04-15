@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1 concat() 方法用于合并两个或多个数组。
+        //此方法不会更改现有数组，而是返回一个新数组。
+        var arr1 = [1, 2, 3];
+        var arr2 = ['red', 'blue', 'yellow'];
+        var arr_new = arr1.concat(arr2);
+        console.log(arr_new);
+
+        //2 slice(begin, end) 方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。!!!!原始数组不会被改变。
+        //begin 如果该参数为负数，则表示从原数组中的倒数第几个元素开始提取，slice(-2) 表示提取原数组中的倒数第二个元素到最后一个元素（包含最后一个元素）。
+        const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+        console.log(animals.slice(2));
+        // expected output: Array ["camel", "duck", "elephant"]
+
+        console.log(animals.slice(2, 4));
+        // expected output: Array ["camel", "duck"]
+
+        console.log(animals.slice(1, 5));
+        // expected output: Array ["bison", "camel", "duck", "elephant"]
+        /*
+        slice 不会修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。原数组的元素会按照下述规则拷贝：
+        1如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。
+        2对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。
+        如果向两个数组任一中添加了新元素，则另一个不会受到影响。
+        */
+
+        //3 splice() 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。!!!此方法会改变原数组。
+        // array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+        /*
+        start​
+            指定修改的开始位置（从0计数）。如果超出了数组的长度，则从数组末尾开始添加内容；如果是负值，则表示从数组末位开始的第几位（从-1计数，这意味着-n是倒数第n个元素并且等价于array.length-n）；如果负数的绝对值大于数组的长度，则表示开始位置为第0位。
+        deleteCount 可选
+            整数，表示要移除的数组元素的个数。
+                如果 deleteCount 大于 start 之后的元素的总数，则从 start 后面的元素都将被删除（含第 start 位）。
+                如果 deleteCount 被省略了，或者它的值大于等于array.length - start(也就是说，如果它大于或者等于start之后的所有元素的数量)，那么start之后数组的所有元素都会被删除。
+                如果 deleteCount 是 0 或者负数，则不移除元素。这种情况下，至少应添加一个新元素。
+        item1, item2, ... 可选
+            要添加进数组的元素,从start 位置开始。如果不指定，则 splice() 将只删除数组元素。
+        */
+        var myFish = ['parrot', 'anemone', 'blue', 'trumpet', 'sturgeon'];
+        myFish.splice(2, 0, 'HAHAHA'); // 不删除元素，加入一个新元素
+        console.log(myFish);
+
+        myFish.splice(0, 1); // 删除一个元素
+        console.log(myFish);
+
+        myFish.splice(2); //删除第二位后的所有元素
+        console.log(myFish);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

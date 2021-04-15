@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Father(name, age) {
+            this.name = name
+            this.age = age
+        }
+        // 父类添加方法
+        Father.prototype.money = function() {
+            console.log(' I CAN EARN MONEY');
+        }
+
+        function Son(name, age, score) {
+            Father.call(this, name, age)
+            this.score = score
+        }
+        // 子类继承父类的方法
+        // Son.prototype = Father.prototype 不可以。这样子类再添加删除方法也会影响父类
+        // ------------------- 利用实例对象 --------
+        // 父类实例对象的原型__proto__指向父类构造函数的原型对象。所以子类要使用的父类的方法最终可以去父类原型对象上找！！！！
+        //===============（ 继承父类方法： 这两行很重要 ）========================
+        Son.prototype = new Father() // 由于new Father()也是一个对象，而用这种 = 的方式会覆盖掉原来的Son.prototype使其失去constructor属性，所以
+            // 重新把其constructor属性指回Son
+        Son.prototype.constructor = Son
+            //=========================================
+        Son.prototype.exam = function() {
+            console.log(' I need to  paticipate in exam');
+        }
+        var son = new Son('刘德华', 50, 100)
+        console.log(son);
+        console.log(Son.prototype);
+        console.log(Father.prototype);
+        console.log(Son.prototype.constructor);
+    </script>
+</body>
+
+</html>

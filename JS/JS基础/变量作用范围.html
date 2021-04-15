@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
+
+        //---------在函数内部没用var声明的 也是 全局变量！----
+        function func() {
+            carName = 'Volvo';
+        }
+        //先调用
+        func();
+        console.log(carName); //可以显示Volvo；
+
+        //-------------for  if等不是function-----------------------------
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a[i] = function() {
+                console.log(i);
+            };
+        }
+        console.log(a[6]()); // 10
+
+        str = 'I have something show you';
+        console.log(str[2]); //字符串可以索引
+        //   --函数体--  内部的才是局部变量：function(){....}
+        //------------以下不是函数体function！
+        if (3 < 5) {
+            var num = 3;
+        }
+        console.log(num); //num =   3 可以访问到内部
+
+        //1 作用域链遵循 就近原则
+        var num1 = 10;
+
+        function func1() {
+            var num1 = 20;
+
+            function func2() {
+                console.log(num1);
+            }
+            func2();
+        }
+
+        func1(); //num1 = 20  就近
+
+        //2 作用域链  
+        var num2 = 100;
+
+        function func3() {
+            var num1 = 200;
+
+            function func4() {
+                console.log(num1);
+            }
+            func4();
+        }
+        var num2 = 456;
+        func3(); //num1 = 200  站在目标出发，一层一层往外查找
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

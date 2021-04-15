@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // ==================需要加定位！才能更改=============
+        var div = document.querySelector('div');
+        // 1 touchstart 获得开始时盒子位置、手指位置
+        // 2 touchmove 获得移动时手指位置
+        // 3 手指坐标之差就是移动距离
+        // 4 移动时盒子距离 = 手指移动距离 + 盒子原来位置
+        // 5 不需要touchend 因为手指离开屏幕就不再有move事件，不会触发了
+        var startX = 0; //手指坐标
+        var startY = 0;
+        var x = 0; //盒子坐标
+        var y = 0;
+        div.addEventListener('touchstart', function(e) {
+            startX = e.targetTouches[0].pageX; //DOM元素中第一个手指的坐标
+            startY = e.targetTouches[0].pageY;
+            x = this.offsetLeft; // 当前DOM元素的坐标
+            y = this.offsetTop;
+
+
+        });
+        div.addEventListener('touchmove', function(e) {
+            var moveX = e.targetTouches[0].pageX - startX; // 手指移动的距离
+            var moveY = e.targetTouches[0].pageY - startY;
+            this.style.left = moveX + x + 'px'; //注意单位px
+            this.style.top = moveY + y + 'px';
+
+            e.preventDefault(); // 组织屏幕滚动的默认行为
+        });
+    </script>
+</body>
+
+</html>

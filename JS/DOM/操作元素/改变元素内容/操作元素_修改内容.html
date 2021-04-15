@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            margin-bottom: 10px;
+            width: 55px;
+            height: 45px;
+            background-color: #666;
+            font-weight: 600;
+        }
+        
+        div,
+        p {
+            box-sizing: border-box;
+            padding: 6px;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            background-color: pink;
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <button>显示</button>
+    <div>现在的时间</div>
+    <p></p>
+    <script>
+        var div = document.querySelector('div');
+        var btn = document.querySelector('button');
+        btn.onclick = function() {
+            // 改变内容
+            div.innerHTML = getTime();
+        }
+
+        function getTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+
+            h = h < 10 ? '0' + h : h; //--------------!!!----------
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            var hms = '现在是' + h + ':' + m + ':' + s;
+            return hms;
+        }
+
+        // 不添加事件,直接修改
+        var p = document.querySelector('p');
+        p.innerHTML = getTime();
+    </script>
+</body>
+
+</html>

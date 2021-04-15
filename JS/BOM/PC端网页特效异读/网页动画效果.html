@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            /* 定位！ */
+            position: absolute;
+            left: 0;
+            margin-top: 100px;
+            width: 100px;
+            height: 80px;
+            background-color: teal;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 动画实现原理
+        // 通过setInterval()不断移动
+        // 1 获得盒子当前位置
+        // 2 让盒子在当前位置基础上加1个移动距离
+        // 3 利用定时器不断重复
+        // 4 加一个结束定时器的条件
+        // 5 此元素需要添加定位，才能使用element.style.left\top
+        var div = document.querySelector('div');
+        var timer = setInterval(function() {
+            //清除定时器条件
+            if (div.offsetLeft > 400) {
+                clearInterval(timer);
+            }
+            //注意单位px
+
+            div.style.left = div.offsetLeft + 5 + 'px';
+
+        }, 50);
+    </script>
+</body>
+
+</html>

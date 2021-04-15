@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>123</div>
+    <a href="http://www.baidu.com">baidu</a>
+    <form action="">
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        var div = document.querySelector('div');
+        div.addEventListener('click', function(e) {
+                // 1  返回事件类型  click
+                console.log(e.type);
+            })
+            // 2 阻止默认行为：默认行为————点击链接跳转，点击提交表单提交
+        var a = document.querySelector('a');
+        a.addEventListener('click', function(e) {
+                //2.1 阻止链接跳转
+                e.preventDefault(); // DOM标准写法
+            })
+            // 兼容性
+            // 2.2 传统 注册方法
+        a.onclick = function(e) {
+            // 普通浏览器
+            e.preventDefault();
+            // IE678  returnValue属性！
+            e.returnValue;
+            // 传统注册方法也可以用return false；仅限传统注册事件。return后语句不执行.没有兼容性问题
+            return false;
+        }
+    </script>
+</body>
+
+</html>

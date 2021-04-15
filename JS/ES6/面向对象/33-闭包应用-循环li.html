@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 200px;
+            margin: 100px auto;
+        }
+        
+        ul li {
+            background-color: cornflowerblue;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>鲱鱼罐头</li>
+        <li>榴莲</li>
+        <li>香蕉</li>
+        <li>菠萝</li>
+    </ul>
+    <script>
+        // 闭包应用————点击li输出当前li的索引号
+        // 1 我们可以了利用 动态添加属性的方式
+        var lis = document.querySelector('ul').querySelectorAll('li')
+            // for (var i = 0; i < lis.length; i++) {
+            //     lis[i].onclick = function() {
+            //         console.log(i); //如果不设置属性 因为里面的是异步而for循环是同步任务 
+            //         // 所以同步任务先执行 for循环进行到最后i=4 
+            //         // 所以i一直都保持是4
+            //         // 所以 这种方法不行
+            //     }
+            // }
+            // ---------动态绑定属性------------
+            // for (var i = 0; i < lis.length; i++) {
+            //     lis[i].index = i; //在 异步任务外面 保存i
+
+        //     lis[i].onclick = function() {
+        //         console.log(this.index);
+
+        //     }
+        // }
+        // -----------利用闭包-----------
+        for (var i = 0; i < lis.length; i++) {
+            // 相当于创建了4个立即执行函数
+            // 然后把外部的i传给内部
+            // 这个立即执行函数就是一个 闭包
+            (function(i) {
+                lis[i].onclick = function() {
+                    console.log(i);
+                }
+            })(i)
+        }
+    </script>
+</body>
+
+</html>

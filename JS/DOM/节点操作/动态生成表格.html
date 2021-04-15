@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+        
+        td,
+        th {
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- // 动态生成行列 -->
+        </tbody>
+    </table>
+    <script>
+        // 1 先去准备好数据:数组形式
+        var datas = [{
+            name: '魏璎珞',
+            subject: 'Javascript',
+            score: 100
+
+        }, {
+            name: '弘历',
+            subject: 'Java',
+            score: 99
+
+        }, {
+            name: '傅恒',
+            subject: 'Python',
+            score: 95
+
+        }, {
+            name: '明玉',
+            subject: 'JavaWeb',
+            score: 88
+
+        }];
+        // 2 往tbody里创建行tr，  ：有几个人创建几行
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            // 1 创建tr
+            var tr = document.createElement('tr');
+            // 添加行
+            tbody.appendChild(tr);
+            // 2 创建完行后创建行里的列:根据对象中的数量创建
+            for (var j in datas[i]) {
+                var td = document.createElement('td');
+                tr.appendChild(td);
+                //添加文字进入单元格：通过datas[i][j],这个是属性值
+                td.innerHTML = datas[i][j];
+            }
+            // 3 以上每次循环后创建好一行，下面创建的就在之前基础上添加； 最后创建带有删除的单元格
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            // 删除键
+            td.innerHTML = "<a href='javascript:;'>删除</a>";
+
+        }
+        // 4  删除功能实现
+        var as = document.querySelectorAll('a');
+        for (let k = 0; k < as.length; k++) {
+            as[k].onclick = function() {
+                // a的父元素是td，td的父元素是tr 。tr的父元素是tbody。——要删除tr，就如下 parentNode.removeChild(child);
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+    </script>
+</body>
+
+</html>

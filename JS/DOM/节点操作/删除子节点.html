@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>删除</button>
+    <ul>
+        <li>我</li>
+        <li>是</li>
+        <li>谁</li>
+    </ul>
+    <script>
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+        btn.onclick = function() {
+                if (ul.children.length == 0) {
+                    this.disabled = true;
+                } else {
+                    ul.removeChild(ul.children[0]);
+                }
+            }
+            //  ul.removeChild(child); 删除元素
+    </script>
+</body>
+
+</html>

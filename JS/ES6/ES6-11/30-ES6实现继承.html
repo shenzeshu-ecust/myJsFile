@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Phone {
+            constructor(brand, price) {
+                    this.brand = brand;
+                    this.price = price
+                }
+                // 方法成员
+            call() {
+                console.log('calling...');
+            }
+        }
+        class SmartPhone extends Phone {
+            constructor(brand, price, color) {
+                super(brand, price);
+                this.color = color
+            }
+            photo() {
+                    console.log('take a photo');
+                }
+                // -------------------子类同名方法会重写父类方法--------------
+            call() {
+                console.log(' i will rewrite super method');
+            }
+        }
+        let apple = new SmartPhone('Apple', 5999, 'green')
+        console.log(apple);
+        apple.call()
+    </script>
+</body>
+
+</html>

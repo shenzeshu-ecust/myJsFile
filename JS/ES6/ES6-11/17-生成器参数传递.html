@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* gen(param) {
+            console.log('生成器参数', param);
+
+            let one = yield 1; //可以接收第二个next(传递来的参数)
+            console.log(one);
+            let two = yield 2;
+            console.log(two);
+            let three = yield 3;
+            console.log(three);
+        }
+        let iterator = gen('A')
+        console.log(iterator.next());
+        // next() 可以传入实参
+        console.log(iterator.next('B'));
+        console.log(iterator.next('C'));
+        console.log(iterator.next('D'));
+    </script>
+</body>
+
+</html>

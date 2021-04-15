@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES5 实现类
+        function Phone(tag, price) {
+            // 属性添加
+            this.tag = tag;
+            this.price = price;
+        }
+        // 方法添加在原型上
+        Phone.prototype.call = function() {
+                console.log(' I can call you ');
+            }
+            // 实例化对象
+        let apple = new Phone('apple', '5999')
+        console.log(apple);
+        // -----------------------
+        // ES6
+        class shouji {
+            // 创建类实例自动执行
+            constructor(name, price) {
+                    this.name = name;
+                    this.price = price;
+                }
+                // 这里添加方法————不能用function
+            call() {
+                console.log('CALL ME !!');
+            }
+        }
+        let oneplus = new shouji('oneplus', '4999')
+        console.log(oneplus);
+    </script>
+</body>
+
+</html>

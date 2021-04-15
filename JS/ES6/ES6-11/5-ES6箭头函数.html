@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let fn = (a, b) => {
+            console.log(a + b);
+        }
+        fn(1, 4)
+            // 1 箭头函数中this 是静态的，this始终指向 函数声明时所在作用域下的this的值————用apply call等也改变不了
+        function getName() {
+            console.log(this.name);
+
+        }
+        let getName2 = () => {
+            console.log(this.name);
+        }
+        window.name = '周杰伦'
+        getName() //周杰伦
+        getName2() //周杰伦
+            // ---------使用call 改变不了箭头函数里的this指向-------
+        let Person = {
+            name: '刘德华'
+        }
+        getName.call(Person) // 刘德华   被call变化了
+        getName2.call(Person) // 周杰伦   还是周杰伦
+            // 2 不能作为构造器  ————不能作为构造实例化对象
+            // let People = (name, age) => {
+            //     this.name = name
+            //     this.age = age
+            // }
+            // let p1 = new People('zhangsan', 32)  //Uncaught TypeError: People is not a constructor
+            // 3 不能使用arguments 变量
+        function fun() {
+            console.log(arguments); //可以获取到实参
+        }
+        fun(1, 2, 3) //Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator)/: ƒ]
+            // let fun2 = () => {
+            //     console.log(arguments);
+            // }
+            // fun2(2, 4)  // arguments 未定义  显示错误
+            // 4 箭头函数简化
+            // 4.1 形参只有一个 可以省略 () 
+        let func = n => {
+            console.log(n * 2);
+        }
+        func(8)
+            // 4.2 代码体只有一句话时 可以省略{} 但是return也必须省略
+            //      且语句的执行结果就是函数的返回值
+        let fun2 = n => n * n;
+        let res = fun2(5)
+        console.log(res);
+    </script>
+</body>
+
+</html>

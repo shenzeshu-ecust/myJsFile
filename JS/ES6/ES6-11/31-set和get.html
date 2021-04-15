@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // get配合return用来读取值
+        // set 设置值。必须有形参
+        class Phone {
+            get price() {
+                console.log('参数被读取了');
+                return '5999' // 获得的参数
+            }
+            set price(val) {
+                console.log('属性被修改了');
+            }
+        }
+        let p = new Phone()
+        console.log(p.price);
+        p.price = 6999
+        class SmartPhone {
+            constructor(name, price, color) {
+                this.name = name
+                this.price = price
+                this.color = color
+            }
+            get getColor() {
+                console.log('颜色被读取了');
+                return this.color
+            }
+            set setColor(val) {
+                this.color = val
+            }
+        }
+        let apple = new SmartPhone('apple', 5999, 'black')
+        console.log(apple);
+        console.log(apple.getColor);
+        apple.setColor = 'red'
+        console.log(apple.color);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = `<a href="http://www.baidu.com">百度</a>`
+            // 提取url 和 标签文本
+            //-------------- 老法
+        let reg = /<a href="(.*)">(.*)<\/a>/
+        let res = reg.exec(str)
+        console.log(res);
+        /*
+        0: "<a href="http://www.baidu.com">百度</a>"
+        1: "http://www.baidu.com"
+        2: "百度"
+        groups: undefined
+        */
+        console.log(res[1]); //url
+        // -------- 新法 捕获分组
+        let regnew = /<a href="(?<url>.*)">(?<text>.*)<\/a>/
+        let resnew = regnew.exec(str)
+        console.log(resnew);
+        /*
+        0: "<a href="http://www.baidu.com">百度</a>"
+        1: "http://www.baidu.com"
+        2: "百度"
+        groups: {url: "http://www.baidu.com", text: "百度"}
+        */
+        console.log(resnew.groups);
+        console.log(resnew.groups.text);
+    </script>
+</body>
+
+</html>

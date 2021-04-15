@@ -1,0 +1,4 @@
+节点至少拥有nodeType\nodeName\nodeValue这三个基本属性
+元素节点nodeType =1 (主要操作的)
+属性节点 = 2
+文本节点 = 3 （文本节点包含文字、空格、换行等）

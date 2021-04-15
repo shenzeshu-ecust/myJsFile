@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 获取用户 2 获取订单 3 获取价格
+        // 利用参数
+        function getUsers() {
+            setTimeout(() => {
+                let data = 'user-data'
+                iterator.next(data)
+            }, 1000)
+        }
+
+        function getOrders() {
+            setTimeout(() => {
+                let data = 'order-data'
+                iterator.next(data)
+
+            }, 1000)
+        }
+
+        function getPrice() {
+            setTimeout(() => {
+                let data = 'price-data'
+                iterator.next(data)
+
+            }, 1000)
+        }
+        // 生成器实现依次调用
+        function* gen() {
+            let users = yield getUsers();
+            console.log(users);
+
+            let orders = yield getOrders();
+            console.log(orders);
+
+            let price = yield getPrice();
+            console.log(price);
+
+        }
+        let iterator = gen()
+        iterator.next();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 100px auto;
+            width: 300px;
+            height: 30px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .box input {
+            width: 270px;
+            height: 25px;
+            border: none;
+            /* 取消点击后显示的外边框 */
+            outline: none;
+        }
+        
+        img {
+            width: 25px;
+            position: absolute;
+            top: 2px;
+            right: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 核心思路：点击眼睛按钮，把密码框类型改为文本框就可以看见里面的密码 -->
+    <!-- 算法：利用flag变量。是1，切换文本框，flag重设为0，否则密码框，重设1 -->
+    <div class="box">
+        <!-- 在html中，<label>标签通常和<input>标签一起使用，<label>标签为input元素定义标注（标记）。
+            <label>标签的作用是为鼠标用户改进了可用性，当用户点击<label>标签中的文本时，浏览器就会自动将焦点转到和该标签相关联的控件上；           
+            <label>标签在单选按钮和复选按钮上经常被使用，使用该标签后，你点击单选按钮或复选按钮的文本也是可以选中的。 -->
+        <input type="password" name="" id="pwd">
+        <label for="">
+            <img src="./close.png" alt="" id="eye">
+        </label>
+    </div>
+    <script>
+        // 获取对象
+        var pwd = document.getElementById('pwd');
+        var eye = document.getElementById('eye');
+        // 挂接事件
+        var flag = 0;
+        eye.onclick = function() {
+            if (flag == 1) {
+                // flag必须变化
+                eye.src = './close.png';
+                pwd.type = 'password';
+                flag = 0;
+            } else {
+                //第一次点击一定要变化，所以第一个点击进入这里
+                eye.src = './open.png';
+                pwd.type = 'text';
+                flag = 1;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1  window.onload可以使script写在元素前面。因为会在窗口所有元素（CSS\dom\picture\flash.....）加载完成后才执行。
+        // window.onload = function() {
+        //         var btn = document.querySelector('button');
+        //         btn.onclick = function() {
+        //             alert('haha!');
+        //         }
+        //     }
+        //     // 但是传统法注册会后者覆盖前者:按钮点击无效了。。。只执行下面代码
+        // window.onload = function() {
+        //     alert('直接来了！');
+        // }
+
+        // 2 使用window.addEventListener()不会冲突
+        window.addEventListener('load', function() {
+            var btn = document.querySelector('button');
+            btn.addEventListener('click', function() {
+                alert('又是我');
+            })
+        });
+        window.addEventListener('load', function() {
+            alert('不会覆盖！');
+        });
+        // 3 document.addEventListener('DOMContentLoaded',function (){}) 加载DOM元素完毕后就执行，图片、css、flash之类先不加载
+        // 所以快的多，适合有大量图片、css的页面的情况
+        document.addEventListener('DOMContentLoaded', function() {
+            alert('我快多了');
+        });
+    </script>
+</head>
+
+<body>
+    <button>确定</button>
+</body>
+
+</html>

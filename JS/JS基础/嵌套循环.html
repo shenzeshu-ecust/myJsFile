@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // n*n星星
+        var rownum = prompt('几行几列？');
+        var str = '';
+        for (var i = 1; i <= rownum; i++) {
+            for (var j = 1; j <= rownum; j++) {
+                str += '★'
+            }
+            str = str + '\n';
+        }
+        console.log(str);
+
+        //倒三角
+        var rownum1 = prompt('几个开始？');
+        var str1 = '';
+        for (var i = 1; i <= rownum1; i++) {
+            //-----------------------或者j=i;j<=rownum1;j++
+            for (var j = 0; j <= rownum1 - i; j++) {
+                str1 += '★'
+            }
+            str1 = str1 + '\n';
+        }
+        console.log(str1);
+
+        //正三角     
+        var str2 = '';
+        for (var i = 1; i <= 6; i++) {
+            for (var j = 6 - i; j < 6 && j >= 0; j++) {
+                str2 += '★'
+            }
+            str2 = str2 + '\n';
+        }
+        console.log(str2);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

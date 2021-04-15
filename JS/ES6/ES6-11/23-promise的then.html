@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('hahaha')
+            }, 1000)
+
+        });
+        let res = p.then(value => {
+            console.log(value);
+            // 非Promise类型
+            return '返回的res中的promisevalue值'
+                // 也可是Promise
+                // return new Promise((r, e) => {
+                //     r('OK')
+                // })
+
+        })
+        console.log(res);
+        // res当然也可以不是Promise对象 那么此时 显示成功，并且成功的值就是return的内容
+        //res 可以是一个Promise对象 其状态成功与否取决于（）内的内容是否成功
+        // 所以 then 可以链式调用
+        p.then(value => {
+            console.log(res);
+        }).then(err => {
+            console.warn(err);
+        })
+    </script>
+</body>
+
+</html>

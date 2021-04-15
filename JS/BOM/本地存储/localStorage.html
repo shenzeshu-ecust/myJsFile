@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="">
+    <button class="set">增</button>
+    <button class="get">获得</button>
+    <button class="remove">删</button>
+    <button class="del">移除所有</button>
+    <script>
+        // localStorage
+        // 生命周期永久生效，除非主动删除
+        // 可以多窗口共享.同一浏览器可以共享
+        // 以键值对形式
+        var ipt = document.querySelector('input');
+        var btnadd = document.querySelector('.set');
+        var btnget = document.querySelector('.get');
+        var btnremove = document.querySelector('.remove');
+        var btndel = document.querySelector('.del');
+        btnadd.addEventListener('click', function() {
+            localStorage.setItem('uname', ipt.value);
+            localStorage.setItem('myname', ipt.value);
+            localStorage.setItem('hername', ipt.value);
+
+
+        });
+        btnget.addEventListener('click', function() {
+            console.log(localStorage.getItem('uname'));
+        });
+        btnremove.addEventListener('click', function() {
+            localStorage.removeItem('uname');
+        });
+        btndel.addEventListener('click', function() {
+            localStorage.clear();
+        })
+    </script>
+</body>
+
+</html>

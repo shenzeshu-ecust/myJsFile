@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            box-sizing: border-box;
+            margin: 100px auto;
+            padding: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: blanchedalmond;
+        }
+        
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        var father = document.querySelector('.father');
+        var son = document.querySelector('.son');
+
+
+        // 点击son
+        son.addEventListener('click', function(e) {
+            alert('son!');
+            // 阻止冒泡 w3c推荐写法
+            e.stopPropagation();
+            // 兼容性：照顾低版本浏览器——非标准
+            e.cancelBubble = true;
+        }, false);
+        father.addEventListener('click', function() {
+            // 这里没阻止冒泡，所以点击完father后，docment还是会跳出警示！
+            alert('father!');
+        });
+        document.addEventListener('click', function() {
+            alert('document!');
+        });
+    </script>
+</body>
+
+</html>

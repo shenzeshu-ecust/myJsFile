@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 猜数字 猜大猜小会提示，直至猜对才退出
+
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // random = getRandom(1, 10);
+        // while (true) { //死循环 注意退出条件
+        //     var yournum = prompt('你猜几？');
+        //     if (yournum > random) {
+        //         alert('猜大了！');
+        //     } else if (yournum < random) {
+        //         alert('猜小了！')
+        //     } else {
+        //         alert('对了！');
+        //         break; //退出条件；
+
+        //     }
+
+        // }
+
+
+        // 只有十次机会的猜谜。
+        random1 = getRandom(1, 50);
+        flag = false; // 猜对标志位
+        var i = 0
+        while (i < 10) {
+            var yournum = prompt('你猜几？');
+            if (yournum > random1) {
+                alert('猜大了！');
+            } else if (yournum < random1) {
+                alert('猜小了！')
+            } else {
+                alert('对了！');
+                flag = true;
+
+            }
+            i++;
+        }
+        if (flag == false) {
+            alert('十次机会已经用完了！')
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

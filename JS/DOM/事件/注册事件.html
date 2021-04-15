@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>
+        传统方式
+    </button>
+    <button>方法监听注册方式</button>
+    <button>attachEvent方法</button>
+    <script>
+        //1 传统方式： 唯一性，同一个元素只能设置一个处理函数，后面相同事件的会覆盖前面的
+        var btn = document.querySelectorAll('button');
+        btn[0].onclick = function() {
+            //会被下面的 覆盖
+            alert('哈哈');
+        }
+        btn[0].onclick = function() {
+            alert('呵呵');
+        }
+
+        //2 方法监听注册方式：addEventListener()   w3c标准
+        // 同一个元素同一个事件可以注册多个监听器，按照顺序依次进行
+        // ie9 之前IE不支持此方法，可使用attachEvent()代替
+        btn[1].addEventListener('click', function() {
+            alert('监听结果1');
+        })
+        btn[1].addEventListener('click', function() {
+                alert('监听结果2');
+            })
+            //3 ie9以前：老版本使用 attachEvent()
+        btn[2].attachEvent('onclick', function() {
+                alert('哟！还在用这方法呢！');
+                //显示不了，因为chrome版本太新
+            })
+            // 4 如果要照顾有所浏览器，需要封装函数判断是否支持以上各个方法。。
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 利用RegExp对象创建正则表达式 —— 用得少
+        var reg = new RegExp(/123/)
+            // 2 利用字面量创建 —— 用的多
+        var rg = /132/
+            // 3 .regExp.test(str) 测试str是否符合正则表达式
+        console.log(rg.test('132')) // true
+        console.log(rg.test(132)) // true
+    </script>
+</body>
+
+</html>

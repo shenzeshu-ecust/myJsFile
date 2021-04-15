@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES8
+        const o = {
+                name: '尚硅谷',
+                school: ['清华', '北大', '人大'],
+                location: ['shanghai', 'beijing']
+
+            }
+            // 1 获取对象所有的键 Object.keys()
+        console.log(Object.keys(o));
+        // 2 获取对象所有的键值 Object.values()
+        console.log(Object.values(o));
+        // 3 Object.entries()  ----> [Array(2), Array(2), Array(2)] 数组包含数组
+        console.log(Object.entries(o));
+        // 0: (2) ["name", "尚硅谷"]
+        // 1: (2) ["school", Array(3)]
+        // 2: (2) ["location", Array(2)]
+        // 可以用来创建Map
+        let m = new Map(Object.entries(o))
+        console.log(m.get('location'));
+        // 对象属性描述 Object.getOwnPropertyDescriptors()
+        console.log(Object.getOwnPropertyDescriptors(o));
+        /*
+        {name: {…}, school: {…}, location: {…}}
+            location: {value: Array(2), writable: true, enumerable: true, configurable: true}
+            name: {value: "尚硅谷", writable: true, enumerable: true, configurable: true}
+            school: {value: Array(3), writable: true, enumerable: true, configurable: true}
+            __proto__: Object
+        */
+        //  访问由Object.create() 中的属性
+        const obj = Object.create(Object.prototype, { //第一个参数表示原型。如果不设置，则没有原型链。不能用toSting()这些方法
+            name: {
+                value: '你是',
+                writable: true,
+                enumerable: true,
+                configurable: true,
+            }
+        })
+        console.log(obj);
+    </script>
+</body>
+
+</html>

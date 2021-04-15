@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1js引擎运行js分2步： 1 预解析 2代码执行
+        //1 ）预解析： js引擎会把js中所有 var、function提升到当前作用域的最前面
+
+        //2 ）代码执行 按照顺序 从上往下
+
+        //预解析分为 变量提升（预解析） 和 函数提升
+        // var  num = 10；  var num提升，但=10 不提升；
+        //  赋值不提升！
+
+        //----------------
+        fn(); //成功；因为函数function被提升了；
+        function fun() {
+            console.log();
+        }
+
+        //----------------
+        fun(); //!!!!报错！！！！
+        var fun = function() {
+            console.log(22);
+        }
+
+        // 相当于下面的代码
+        var fun;
+        fun();
+        fun = function() {
+                console.log(22);
+            }
+            // 所以：函数表达式var fun= function(){}的调用fun()必须写在声明后面。
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        var time = 5;
+        func();
+        //由于setInteval也会在1s后执行，所以需要先执行一次计数
+        setInterval(() => {
+            if (time !== 0) {
+                func();
+            } else {
+                //改变location.href就可以跳转页面
+                location.href = 'http://www.baidu.com';
+            }
+        }, 1000);
+        // 计数函数；
+        function func() {
+            div.innerHTML = '你将在' + time + '秒后跳转页面';
+            time--;
+        }
+    </script>
+</body>
+
+</html>

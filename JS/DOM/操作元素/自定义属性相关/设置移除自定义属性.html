@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="first" class="one" index="1"></div>
+    <script>
+        // 1 设置属性
+        // 法1：element.属性='';
+        var div = document.querySelector('div');
+        div.id = 'second';
+        // 法2：element.setAttribute('属性','值')；主要针对自定义属性
+        div.setAttribute('index', "2");
+        // 也可以对内置属性：class特殊
+        // 一般class类名重置：使用className
+        div.className = 'third';
+        //setAttribute('class','')
+        div.setAttribute('class', 'fourth');
+        // 2 移除属性：removeAttribute()
+        div.removeAttribute('index');
+    </script>
+</body>
+
+</html>

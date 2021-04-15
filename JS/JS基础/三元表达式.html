@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //条件表达式 ？ 表达式1：表达式2
+        //真则返回表达式1，否则返回表达式2；
+        var num = prompt('ID');
+        var res = Number(num) > 100 ? 'haha' : 'hehe'; //表达式有结果
+        alert(res);
+
+        //-----------------------------
+        //补零实例，小于10，十位补0
+        //拼接: '0'+
+        var time = prompt('请输入0-59之间的一个数');
+        res = time < 10 ? '0' + time : time;
+        alert(res);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

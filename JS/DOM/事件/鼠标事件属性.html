@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('click', function(e) {
+            // 1 获得鼠标在可视区域的坐标：相对坐标
+            console.log(e.clientX);
+            console.log(e.clientY);
+            console.log('---------1---------');
+            // 2 获得鼠标在整个页面的坐标：绝对坐标
+            console.log(e.pageX);
+            console.log(e.pageY);
+            console.log('---------2---------');
+            // 3 获得距离显示器左右边框的坐标（网页不是全屏时。。。）
+            console.log(e.screenX);
+            console.log(e.screenY);
+            console.log('---------3---------');
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 800px;
+            height: 600px;
+            border: cadetblue 1px solid;
+            margin: 100px auto;
+        }
+        
+        .nav {
+            height: 60px;
+            border-bottom: solid 1px cadetblue;
+        }
+        
+        .nav ul {
+            display: flex;
+            padding: 0;
+            height: 60px;
+        }
+        
+        .nav ul li {
+            flex: 1;
+            width: 100px;
+            height: 60px;
+            line-height: 60px;
+            list-style: none;
+            text-align: center;
+            background-color: palegoldenrod;
+        }
+        
+        .content div {
+            background-color: lightblue;
+            display: none;
+            width: 100%;
+            height: 540px;
+        }
+        
+        .current {
+            background-color: pink !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <ul>
+                <li class="current">关注</li>
+                <li>推荐</li>
+                <li>热榜</li>
+                <li>视频</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="a con" style="display:block">关注内容</div>
+            <div class="b con">推荐内容</div>
+            <div class="c con">热榜内容</div>
+            <div class="d con">视频内容</div>
+
+        </div>
+    </div>
+    <script>
+        let lis = document.querySelectorAll('li')
+        let cons = document.querySelectorAll('.con')
+        for (let i = 0; i < lis.length; i++) {
+            lis[i].onclick = function() {
+                cons[i].setAttribute('index', i) //绑定一个属性 
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].className = ''
+                }
+                lis[i].className = 'current'
+                let index = cons[i].getAttribute('index')
+                for (let i = 0; i < cons.length; i++) {
+                    cons[i].style.display = 'none'
+                }
+
+                cons[i].style.display = 'block'
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // flat(n=1) 给数组降维  n表示深度。默认降1维
+        //如果原数组有空位，flat()方法会跳过空位。
+        let arr = [1, , 2, 3, [4, 5]]
+        console.log(arr.flat()); //[1, 2, 3, 4, 5]
+        let arr2 = [1, 2, 3, [4, 5, 6, [7, 8, 9]]]
+        console.log(arr2.flat(2)); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+        // flatMap flatMap()方法对原数组的每个成员执行一个函数
+        // flatMap()只能展开一层数组。
+        const arr3 = [1, 2, 3]
+        console.log(arr3.flatMap(i => [i * 10])); // [10,20,30]
+    </script>
+</body>
+
+</html>

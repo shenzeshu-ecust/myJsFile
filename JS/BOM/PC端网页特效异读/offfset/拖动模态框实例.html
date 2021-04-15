@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        a {
+            text-decoration: none;
+            color: forestgreen;
+        }
+        
+        .link {
+            margin: 100px auto;
+            width: 150px;
+            height: 35px;
+            background-color: skyblue;
+            text-align: center;
+            line-height: 35px;
+        }
+        
+        .login {
+            display: none;
+            /* 采用固定定位的方式，始终在页面最中间；且显示在最上面一层 */
+            position: fixed;
+            /* ------------------！显示在中间--------------------！ */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 300px;
+            background-color: skyblue;
+            z-index: 10;
+        }
+        
+        .title {
+            width: 500px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            border-bottom: 1px solid #ccc;
+            /* 鼠标经过，显示移动的鼠标图案 */
+            cursor: move;
+        }
+        
+        .cancel {
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            background-color: orangered;
+            text-align: center;
+            font-size: 18px;
+            color: black;
+        }
+        
+        form {
+            margin-top: 10px;
+        }
+        
+        .cancel a {
+            display: block;
+        }
+        
+        .login-input {
+            width: 460px;
+            height: 50px;
+            border: #ccc 2px solid;
+            margin-bottom: 30px;
+            margin-left: 20px;
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        .login-input label {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .login-input input {
+            width: 200px;
+            height: 30px;
+            margin-top: 10px;
+        }
+        
+        .btn {
+            margin-left: 10px;
+            width: 480px;
+            height: 35px;
+            text-align: center;
+            line-height: 35px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .mask {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="link"><a href="javascript:;">点击进入登录界面</a></div>
+    <div class="login">
+        <span class="cancel"><a href="javascript:;">X</a></span>
+        <div class="title">登陆会员</div>
+        <div class="detail">
+            <!-- <label> 标签为 input 元素定义标注（标记）。
+                label 元素不会向用户呈现任何特殊效果。不过，它为鼠标用户改进了可用性。如果您在 label 元素内点击文本，就会触发此控件。就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。               
+                <label> 标签的 for 属性应当与相关元素的 id 属性相同。 -->
+            <form action="">
+                <div class="login-input1 login-input">
+                    <label for="name">姓名: </label>
+                    <input type="text" id="name" placeholder="请输入用户名">
+                </div>
+                <div class="login-input2 login-input">
+                    <label for="pwd">密码: </label>
+                    <input type="password" id="pwd" placeholder="请输入密码">
+                </div>
+                <button class="btn">登陆会员</button>
+            </form>
+        </div>
+
+    </div>
+    <!-- 遮盖层 -->
+    <div class="mask"></div>
+    <script>
+        var link = document.querySelector('.link');
+        var login = document.querySelector('.login');
+        var mask = document.querySelector('.mask');
+        link.addEventListener('click', function() {
+            // 1 点击按钮，登录界面和背景图层显示
+            login.style.display = 'block';
+            mask.style.display = 'block';
+        })
+        var cancel = document.querySelector('.cancel');
+        cancel.addEventListener('click', function() {
+                // 2 点击X，关闭登陆界面和背景图层
+                login.style.display = 'none';
+                mask.style.display = 'none';
+            })
+            //  3 制作移动title框，整个login界面也移动
+        var title = document.querySelector('.title');
+        // 1）移动时，鼠标在盒子内距离盒子的距离不变
+        // 2）鼠标距离页面的边距 - 鼠标距离盒子的边距 = 盒子距离页面的边距
+        // 3）鼠标按下mousedown 开始移动； 移动move 开始改变left，top； 松开mouseup，结束移动：取消移动事件；
+        title.addEventListener('mousedown', function(e) {
+            var x = e.pageX - login.offsetLeft;
+            var y = e.pageY - login.offsetTop;
+            // 鼠标在整个页面中移动，所以给页面加事件！
+            document.addEventListener('mousemove', move);
+
+            function move(e) {
+                //========================== 注意 加单位 px ！！！==================================
+                login.style.left = e.pageX - x + 'px';
+                login.style.top = e.pageY - y + 'px';
+            }
+            //页面添加事件：当鼠标弹起，取消移动————注销事件
+            document.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', move)
+            })
+        })
+    </script>
+</body>
+
+</html>

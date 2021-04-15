@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <textarea name="" id="words" cols="30" rows="10"></textarea>
+    <button>发表</button>
+    <script>
+        // 1 replace(regExp/被替换的，替换为)
+        var str = 'andy 是我的'
+        var newstr = str.replace('andy', 'baby')
+        console.log(newstr);
+        var newRegStr = str.replace(/andy/, 'you')
+        console.log(newRegStr);
+        // 2 /g 全局   /i忽略大小写 /gi 全局且忽略大小写
+        var btn = document.querySelector('button')
+        var text = document.querySelector('#words')
+        btn.onclick = function() {
+            text.value = text.value.replace(/fuck|激情|操/gi, '**') //全局匹配 忽略大小写
+        }
+    </script>
+</body>
+
+</html>

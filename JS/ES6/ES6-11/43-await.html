@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // await 必须在async 里!!! 。反过来async不一定需要await
+        // await 右边 跟 Promise对象
+        const p = new Promise((r, e) => {
+            r('OK')
+        })
+        async function fun() {
+            try {
+                let res = await p; // 这里的返回结果就是 Promise成功的返回结果!!!!!
+                console.log(res);
+            } catch (error) {
+                console.log(error); // 失败的结果放在catch中
+            }
+        }
+        fun()
+    </script>
+</body>
+
+</html>

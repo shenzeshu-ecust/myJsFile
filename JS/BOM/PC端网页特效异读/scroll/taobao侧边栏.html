@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+        
+        .header {
+            height: 300px;
+            background-color: pink;
+        }
+        
+        .nav {
+            height: 300px;
+            background-color: khaki;
+        }
+        
+        .main {
+            height: 500px;
+            background-color: lightsalmon;
+        }
+        
+        .footer {
+            height: 400px;
+            background-color: skyblue;
+        }
+        
+        .asidebar {
+            position: absolute;
+            left: 50%;
+            margin-left: 600px;
+            top: 500px;
+            width: 50px;
+            height: 100px;
+            background-color: steelblue;
+        }
+        
+        .asidebar span {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 50px;
+            height: 40px;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="asidebar">
+        <span>顶部</span>
+    </div>
+    <div class="header w">头部</div>
+    <div class="nav w">导航</div>
+    <div class="main w">主体</div>
+    <div class="footer w">底部</div>
+    <script>
+        // 1 侧边栏到nav时 变为固定定位
+        // 2 到mian时，顶部span出现
+        var asidebar = document.querySelector('.asidebar');
+        var span = document.querySelector('span');
+        var nav = document.querySelector('.nav');
+        var main = document.querySelector('.main');
+        var navTop = nav.offsetTop;
+        var asidebarTop = asidebar.offsetTop;
+        var gap = asidebarTop - navTop;
+        var mainTop = main.offsetTop;
+        document.addEventListener('scroll', function() {
+                // 侧边栏到nav时 变为固定定位
+
+                // window.pageYOffset 页面被卷起的长度 ，而scrollTop是元素（element）被卷起的长度
+                //  有兼容性问题！
+                if (window.pageYOffset >= navTop) {
+                    asidebar.style.position = 'fixed';
+                    asidebar.style.top = gap + 'px';
+                } else {
+                    // 没滚到nav，还是固定定位
+                    asidebar.style.position = 'absolute';
+                    asidebar.style.top = 500 + 'px';
+
+                }
+                //滚到main盒子 出现顶部模块
+                if (window.pageYOffset >= mainTop) {
+                    span.style.display = 'block';
+                } else {
+                    span.style.display = 'none';
+
+                }
+
+            })
+            // 3 点击回到顶部，动画效果回到顶部
+        span.addEventListener('click', function() {
+                //法1 ：window.scroll(x,y) 缺点：生硬
+                // window.scroll(0, 0);
+                //法2：利用动画代码（需要修改）
+                //因为是页面滚动，所以给页面窗口
+                animate(window, 0);
+            })
+            // 动画代码 window.pageYOffset到顶部的距离
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function() {
+                var step = (target - window.pageYOffset) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer)
+                    callback && callback(); //两侧都为true才会执行
+                }
+                //这里需要大改,且window.scroll()不需要单位px
+                // obj.style.left = obj.offsetLeft + step + 'px';
+                // 页面在滚动
+                window.scroll(0, window.pageYOffset + step);
+            }, 15);
+
+        }
+    </script>
+</body>
+
+</html>

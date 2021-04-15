@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 150px;
+            background-color: cornflowerblue;
+            padding: 10px;
+            border: crimson 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 1 offset
+        // 可以得到任意样式表中的样式值（内嵌式、外链接、行内样式表。。）
+        // 获得数值没有单位
+        // offsetWidth offsetHeight 包含padding + border + width
+        // offsetWidth等属性是  只读 属性 。不能修改
+        // -------------想要获取元素大小位置，用offset更合适
+        var div = document.querySelector('div');
+        console.log(div.offsetHeight);
+        // 2 style
+        // 只能得到行内样式的属性：如下
+        // </div>
+        // <div style= "width = 100px">
+        // style.width 获得的有单位的字符串
+        // style。width获得 不包含 padding和border的值
+        // style.width是 可读写 属性
+        // -------------想要给元素更改值，需要用style
+        console.log(div.style.width); // 取不到，因为是内嵌式。只有行内样式才取得到
+        div.style.backgroundColor = 'pink';
+    </script>
+</body>
+
+</html>

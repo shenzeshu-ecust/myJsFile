@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        div.onclick = function() {
+            //通过js修改样式采取驼峰命名法
+            // js修改style，产生的是行内样式表，权重高:     <div style = "background-color:purple;width:250px">
+            this.style.backgroundColor = 'skyblue';
+            this.style.width = '100px';
+            this.style.height = '100px';
+
+
+        }
+    </script>
+</body>
+
+</html>

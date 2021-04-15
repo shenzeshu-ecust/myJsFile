@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function deepClone(t) {
+            let result;
+            if (typeof t == 'object') {
+                if (Array.isArray(t)) {
+                    result = []
+                    for (let i in t) {
+                        result.push(deepClone(t[i]))
+                    }
+                } else if (t == null) {
+                    result = null
+                } else if (t.constructor == RegExp) {
+                    result = t
+                } else {
+                    result = {};
+                    for (let i in t) {
+                        result[i] = deepClone(t[i])
+                    }
+                }
+            } else {
+                result = t
+            }
+            return result
+        }
+        const array = [1, 1, 5, 2, 5, 1, 6, 7]
+        let res1 = [...new Set(array)]
+        console.log(res1);
+        let res2 = array.filter((value, index, array) => array.indexOf(value) == index)
+        console.log(res2);
+        let res3 = []
+        for (let i in array) {
+            if (res3.indexOf(array[i]) < 0) {
+                res3.push(array[i])
+            }
+        }
+        console.log(res3);
+
+
+        // --------------------------
+        async function fecthGet(url, param) {
+            return await new Promise((resolve, reject) => {
+                axios.get(url, {
+                    params: param
+                }).then(res => resolve(res)).catch(err => reject(err))
+            })
+        }
+        // ----
+        async function fetchget(url, params) {
+            return new Promise((resolve, reject) => {
+                axios.get(url, {
+                    params: params
+                }).then(value => {
+                    resolve(value)
+                }).catch(err => {
+                    reject(err)
+                })
+            })
+        }
+        // promiseAll实现
+        function myProAll(arr) {
+            return new Promise((resolve, reject) => {
+                if (!(arr instanceof Array)) throw new TypeError("arr must be an Array")
+                let len = arr.length
+                let resolvedCount = 0
+                let resolvedArray = new Array(len)
+                for (let i = 0; i < len; i++) {
+                    Promise.resolve(arr[i]).then(value => {
+                        resolvedCount++
+                        resolvedArray[i] = value
+                        if (len === resolvedCount) {
+                            return resolve(resolvedArray)
+                        }
+                    }, err => {
+                        return reject(err)
+                    })
+                }
+
+            })
+        }
+        // promise实现
+        // 用类！
+        class PromiseMy {
+            constructor(callback) {
+                this.msg = ''
+                this.status = 'pending'
+                callback(this.resolve.bind(this), this.reject.bind(this))
+                return this
+            }
+            resolve(value) {
+                this.msg = value
+                this.status = 'fulfilled'
+            }
+            reject(err) {
+                this.msg = err
+                this.status = 'rejected'
+            }
+            then(fulfilled, rejected) {
+                if (this.status === 'fulfilled') {
+                    fulfilled(this.msg)
+                }
+                if (this.status === 'rejected') {
+                    rejected(this.msg)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

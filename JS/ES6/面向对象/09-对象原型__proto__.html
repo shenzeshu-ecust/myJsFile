@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Star(name, age) {
+
+            this.name = name
+            this.age = age
+
+
+        }
+        Star.prototype.sing = function() {
+            console.log('sing a song');
+        }
+        var l = new Star('刘德华', 50)
+        var z = new Star('张学友', 50)
+
+        l.sing() // 为什么实例对象能访问到原型对象上的方法？
+        console.log(l); // ==============对象身上 系统自己添加一个__proto__ 指向构造函数Star的原型对象 prototype================
+        // 其实 对象身上的__proto__ 和构造函数的原型对象是一样的
+        console.log(l.__proto__ === Star.prototype); //true
+        // -------------------
+        // 方法查找规则：
+        // 首先看l身上是否有sing方法，如果有就执行这个对象上的sing
+        // 没有的话，因为对象有__proto__的存在，就去其指向的构造函数的原型对象prototype身上查找sing方法
+    </script>
+</body>
+
+</html>

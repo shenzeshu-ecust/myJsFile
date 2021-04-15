@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" name="" id="">
+    <button class="set">增</button>
+    <button class="get">获得</button>
+    <button class="remove">删</button>
+    <button class="del">移除所有</button>
+    <script>
+        // window.sessionStorage
+        // 1 生命周期为关闭浏览器窗口
+        // 2 在一个窗口（页面）下数据可共享
+        // 3 以键值对形式存储数据
+        var ipt = document.querySelector('input');
+        var btnadd = document.querySelector('.set');
+        var btnget = document.querySelector('.get');
+        var btnremove = document.querySelector('.remove');
+        var btndel = document.querySelector('.del');
+        btnadd.addEventListener('click', function() {
+            sessionStorage.setItem('uname', ipt.value); //将input里的内容传给设定的参数名key
+            sessionStorage.setItem('age', ipt.value);
+
+        });
+        btnget.addEventListener('click', function() {
+            var item = sessionStorage.getItem('uname');
+            console.log(item);
+        });
+        btnremove.addEventListener('click', function() {
+            sessionStorage.removeItem('age');
+        });
+        btndel.addEventListener('click', function() {
+            sessionStorage.clear(); //清除所有数据！ 慎用！
+        })
+    </script>
+</body>
+
+</html>

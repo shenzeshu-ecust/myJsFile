@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let const 块级变量 没有变量 提升，必须先赋值后使用
+        //同一块级不能用 var let对用let声明过的变量重新赋值
+        var x = 5; {
+            let x = 6;
+            //let x = 9; //错误
+        }
+        alert(x);
+        //----------使用 const 定义的对象或者数组，其实是可变的
+        const car = {
+            type: 'Fiat',
+            model: '500',
+            color: 'white'
+        };
+        car.color = 'red'; //修改属性
+        car.owner = 'Johnson'; //添加属性
+        //但是不能对常量重新赋值
+        // car = {type:'Volvo',model:'EX60',color:'red'};  错误！
+
+        //--------------------------
+        // 创建常量数组
+        const cars = ["Saab", "Volvo", "BMW"];
+
+        // 修改元素
+        cars[0] = "Toyota";
+
+        // 添加元素
+        cars.push("Audi");
+
+        // cars = ["Toyota", "Volvo", "Audi"];  错误!!
+
+        // const 关键字在不同作用域，或不同块级作用域中是可以重新声明赋值的:
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

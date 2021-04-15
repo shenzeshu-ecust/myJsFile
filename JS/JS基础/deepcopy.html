@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isObj(obj) {
+            return obj instanceof Object;
+        }
+
+        function deepCopy(fromObj, toObj) {
+            for (var key in fromObj) {
+                if (fromObj.hasOwnProperty(key)) {
+                    var fromValue = fromObj[key];
+                    if (!isObj(fromValue)) {
+                        toObj[key] = fromValue
+                    } else {
+                        // 如果是引用类型，那么就再调用一次这个方法，
+                        // 去内部拷贝这个对象的所有属性
+                        // fromValue是什么类型, 创建一个该类型的空对象
+                        var tempObj = new fromValue.constructor;
+                        deepCopy(fromValue, tempObj)
+                        toObj[key] = tempObj
+
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+<script>
+    function isObj(obj) {
+        return obj instanceof Object
+    }
+
+    function deepCopy(fromObj, toObj) {
+        for (var key in fromObj) {
+            if (fromObj.hasOwnProperty(key)) {
+                var fromValue = fromObj[key]
+                if (!isObj(fromValue)) {
+                    toObj[key] = fromValue;
+                } else {
+                    var temObj = new fromValue.constructor
+                        // console.log(tempObj);
+                    deepCopy(fromValue, temObj)
+                    toObj[key] = temObj
+                }
+
+            }
+        }
+    }
+</script>

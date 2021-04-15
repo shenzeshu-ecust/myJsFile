@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // es6允许 给参数参数赋值初始值
+        // 1 形参初始值 具有默认参数 ———— 一般位置要靠后
+        function add(a, b, c = 9) {
+            console.log(a + b + c);
+        }
+        add(1, 2)
+            // 2 与解构赋值结合
+        function connect({
+            host,
+            password,
+            username = 'szs',
+            port = '5000' //自定义的优先，初始值优先级低
+        }) {
+            console.log(host);
+            console.log(password);
+            console.log(username);
+            console.log(port);
+        }
+        connect({
+            host: 'atguigu.com',
+            password: 'root',
+            port: 3306
+        })
+    </script>
+</body>
+
+</html>

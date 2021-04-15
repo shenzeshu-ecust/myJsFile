@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // some 查找数组中是否有满足条件的元素
+        // 返回的是一个布尔值 
+        // 查找到值后 就不会继续执行下个循环！！！！
+        // arr.some((value,index,arr)=> {return })
+        arr = ['pink', 'blue', 'blue']
+        var flag = arr.some((value) => {
+            return value === 'blue'
+        })
+        console.log(flag); // true
+        console.log(arr);
+        // ---------------------
+        // forEach、filter 会一直迭代 就算遇到return true 也会继续迭代
+        // 而some 遇到return true 就会停止迭代
+        // some效率更高
+    </script>
+</body>
+
+</html>

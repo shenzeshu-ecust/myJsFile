@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击1</button>
+    <button>点击2</button>
+    <button>点击3</button>
+
+    <script>
+        // js 提供三种方法改变this 指向 apply call bind
+        // ------------------------
+        // 1 fn.call(thisArg,arg1,arg2)
+        //      1）调用函数 2）改变this指向
+        //      多用于实call现 继承
+        var obj = {
+            name: 'andy'
+        }
+
+        function fn(a, b) {
+            console.log(this);
+            console.log(a + b);
+        }
+        // 原本fn中this指向window
+        fn(2, 3)
+            // call改变this指向obj
+        fn.call(obj, 1, 3)
+            // 用于call实现继承
+        function Father(uname, age) {
+            this.name = uname
+            this.age = age
+        }
+        // 子类
+        function Son(uname, age) {
+            Father.call(this, uname, age)
+            this.gender = 'male'
+        }
+        var son = new Son('刘德华', 50) //继承了父元素的属性
+        console.log(son);
+        // ------------------------
+        // 2 fn.apply(thisArg,[arg1,arg2...]) 
+        //      1）调用函数
+        //      2）改变this 指向
+        //          但是传的参数必须是一个数组
+        var o = {
+            name: 'Jack'
+        }
+
+        function fun(arr) {
+            console.log(this);
+            // 这边接收到的arr 已经不是数组了 是arr中对应的数值类型
+            console.log(arr);
+
+        }
+        fun.apply(o, ['hi'])
+            // apply主要应用 借助数学对象Math求值
+        var arrnew = [1, 22, 6, 25, 8]
+            // 指回Math对象
+        var max = Math.max.apply(Math, arrnew)
+        console.log(max);
+        // -----------------------
+        // 3 fn.bind(thisArg,arg1,arg2)
+        //      1） 不会调用函数！
+        //      2） 返回由指定this值和初始化参数改造的原函数拷贝
+        var objnew = {
+            name: 'Jackson'
+        }
+
+        function func(x, y) {
+            console.log(this);
+            console.log(x + y);
+        }
+        var fbind = func.bind(objnew, 2, 4) //不会调用 但会返回一个改变后的拷贝
+        fbind() //调用
+            // bind 应用————如果函数不想立即调用 又想改变this指向
+            //     案例———— 如果一个按钮 点击后禁用按钮3秒 后恢复
+        var btns = document.querySelectorAll('button')
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function() {
+                this.disabled = true //禁用
+                    // var that = this 老方法：保存this
+                setTimeout(function() {
+                        // that.disabled = false
+                        // btn[i].disabled = false 不行————因为for循环同步队列会最先执行好 到最后是i=4 而没有第四个button
+                        this.disabled = false //原本this指向window
+                    }.bind(this), 2000) //bind不会立即执行 且改变了this指向当前button
+                    // .bind写在函数外面！
+                    // 
+            }
+        }
+    </script>
+</body>
+
+</html>

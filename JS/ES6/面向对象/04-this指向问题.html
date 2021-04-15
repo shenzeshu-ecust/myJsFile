@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>确定</button>
+    <script>
+        // 保存this 指向用
+        var that;
+        class Star {
+            constructor(x) {
+                // 构造器里面的this 指向创建的实例对象
+                that = this;
+                this.name = x;
+                document.querySelector('button').onclick = this.sing;
+                console.log(this);
+            }
+            dance() {
+                // 这个方法里的this 指向 实例对象
+                console.log(this);
+            }
+            sing() {
+                console.log('iam singing');
+                // 这个this 指向调用者 button！！！！
+                console.log(this);
+                // 这里this指向button 所以获取不到name 。需要在构造器里保存下this。然后这里调用
+                console.log('sing方法里通过保存变量获取到 ： ' + that.name);
+            }
+        }
+        var l = new Star('刘德华')
+        console.log(l.name);
+    </script>
+</body>
+
+</html>

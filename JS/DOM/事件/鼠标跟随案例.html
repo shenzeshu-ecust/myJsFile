@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+    1  鼠标不断移动，事件：mousemove
+    2  页面中移动，给document注册事件
+    3  图片要移动且不占位置：position:absolute
+    4  核心原理：每次鼠标移动，都获得新的鼠标坐标，将其作为浮动的
+    left、right值就可以
+    -->
+    <style>
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src=".//images/angel.gif" alt="">
+    <script>
+        var pic = document.querySelector('img');
+        document.addEventListener('mousemove', function(e) {
+            var x = e.pageX;
+            var y = e.pageY;
+            //注意加单位px
+            // 为了图片居中，要使图片上移、左移
+            pic.style.left = x - 35 + 'px';
+            pic.style.top = y - 45 + 'px';
+        })
+    </script>
+</body>
+
+</html>

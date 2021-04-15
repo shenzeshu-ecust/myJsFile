@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 50px auto;
+            height: 100px;
+            width: 200px;
+            background-color: skyblue;
+            font-size: xx-large;
+            font-weight: 700;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        //1 传统方式解绑   =null
+        var divs = document.querySelectorAll('div');
+        divs[0].onclick = function() {
+                alert('传统方式！');
+                // 解绑
+                divs[0].onclick = null;
+            }
+            //2 监听：addEventListener() > removeEventListener()
+            // 需要显式声明 执行函数
+        divs[1].addEventListener('click', fn);
+
+        function fn() {
+            alert('监听爽吗？');
+            // 解绑
+            divs[1].removeEventListener('click', fn);
+        }
+        //3 attachEvent() > detachEvent()
+        divs[2].attachEvent('onclick', fn1);
+
+        function fn1() {
+            alert('老方法啦！');
+            divs[2].detachEvent('onclick', fn1);
+        }
+    </script>
+</body>
+
+</html>

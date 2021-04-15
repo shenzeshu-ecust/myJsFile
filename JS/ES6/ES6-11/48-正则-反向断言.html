@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 声明字符串
+        // 获取555
+        let str = 'JS521324你知道吗555克拉拉'
+            // 正向断言
+        const reg = /\d+(?=克)/
+        console.log(reg.exec(str)[0]);
+        // 反向断言
+        const regexp = /(?<=吗)\d+/
+        console.log(regexp.exec(str)[0]);
+    </script>
+</body>
+
+</html>

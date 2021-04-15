@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 深拷贝 拥有独立内存
+        function deepCopy(newobj, oldobj) {
+            for (var k in oldobj) {
+                var item = oldobj[k] // 获取属性值
+                    // 判断数据类型
+                if (item instanceof Array) {
+                    // 1 判断是否为数组/判断数组必须在Object前面——因为数组也是对象
+                    newobj[k] = []
+                    deepCopy(newobj[k], item)
+                } else if (item instanceof Object) {
+                    // 2 判断是否为对象
+                    newobj[k] = {}
+                    deepCopy(newobj[k], item)
+                } else {
+                    // 3 简单数据类型
+                    newobj[k] = item
+                }
+            }
+        }
+        obj = {
+            id: 1,
+            name: 'shenzeshu',
+            goods: {
+                id: 2,
+                name: 'laptop'
+            },
+            address: ['上海', '北京']
+        }
+        var o = {}
+        deepCopy(o, obj)
+        console.log(o);
+        for (k in o) {
+            console.log(k);
+            console.log(o[k]);
+        }
+    </script>
+</body>
+
+</html>

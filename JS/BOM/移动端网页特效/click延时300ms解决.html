@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 延时由来：双击屏幕可以取消放大屏幕的效果！ -->
+    <meta charset="UTF-8">
+    <!--法1 ： user-scalable=no 禁止页面缩放：可以解决移动端点击300ms延迟问题 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 法2：封装tap。
+        function tap(obj, callback) {
+            var isMove = false;
+            var startTime = 0; //记录触摸时间的变量
+            obj.addEventListener('touchstart', function(e) {
+                startTime = Date.now();
+            });
+            obj.addEventListener('touchmove', function(e) {
+                isMove = true; //看看是否移动。移动不算点击；
+            });
+            obj.addEventListener('touchend', function(e) {
+                if (!isMove && (Date.now() - startTime) < 150) {
+                    // 点击且触摸开始到离开时间小于150ms，判断为点击，执行回调函数
+                    callback && callback();
+                }
+                isMove = false;
+                startTime = 0;
+            });
+        }
+        //调用
+        tap(div, function() {
+            //-----
+        });
+    </script>
+</body>
+
+</html>

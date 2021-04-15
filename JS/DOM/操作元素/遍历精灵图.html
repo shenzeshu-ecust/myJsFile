@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        ul {
+            margin: 100px auto;
+            padding: 50px 20px;
+            width: 300px;
+            height: 300px;
+            border: brown 1px solid;
+        }
+        
+        ul li {
+            float: left;
+            list-style: none;
+            margin: 20px;
+            width: 24px;
+            height: 24px;
+            background-color: pink;
+            background: url(./sprite.png) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var lis = document.querySelectorAll('li');
+        for (let i = 0; i < lis.length; i++) {
+            // 由于是All,所以必须用索引！
+            //找出精灵图布置规律：x=0，y= -44*i
+            let index = 44 * i
+            lis[i].style.backgroundPosition = '0 -' + index + 'px';
+        }
+    </script>
+</body>
+
+</html>

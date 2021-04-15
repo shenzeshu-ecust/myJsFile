@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol>
+        <li>我是第1个</li>
+        <li>我是第2个</li>
+        <li>我是第3个</li>
+        <li>我是第4个</li>
+        <li>我是第5个</li>
+
+    </ol>
+    <script>
+        var ul = document.querySelector('ol');
+        // 1 firstChild 获得第一个：无论元素还是文本节点  lastChild同
+        console.log(ul.firstChild); // #text :因为第一个是文本元素：换行
+        console.log(ul.lastChild); // 也是换行
+        // 2 firstElementChild 第一个元素节点:但是！有兼容性问题！
+        console.log(ul.firstElementChild);
+        console.log(ul.lastElementChild);
+        // 3 -----------------------实际开发中的选择！---------------------------
+        console.log(ul.children[0]); //第一个
+        console.log(ul.children[ul.children.length - 1]); //最后一个
+    </script>
+</body>
+
+</html>

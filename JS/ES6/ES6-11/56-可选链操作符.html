@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ?.  前面条件满足才执行后面
+        function main(config) {
+            // 要输出host 要判断两层：config是否存在？config.db是否存在
+            // 1 a || b，如果a不存在，则返回b。a && b，如果a存在，则返回b，否则返回a
+            // const dbhost = config && config.db && config.db.host
+            // 2 ?.  前面的存在才会下一个 不存在不会报错
+            const dbhost = config?.db?.host
+            console.log(dbhost);
+            const dbhost1 = config?.db1?.host
+            console.log(dbhost1); // undefined
+
+        }
+        main({
+            db: {
+                host: '100',
+                name: 'szs'
+            },
+            cache: {
+                host: '200',
+                name: 'lily'
+            }
+        })
+    </script>
+</body>
+
+</html>

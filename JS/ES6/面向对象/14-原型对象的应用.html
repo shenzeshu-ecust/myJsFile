@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型对象的应用 扩展内置对象方法
+        console.log(Array.prototype);
+        Array.prototype.sum = function() {
+                let sum = 0
+                    // this 指向实例对象
+                for (let i = 0; i < this.length; i++) {
+                    sum = sum + this[i]
+                }
+                return sum
+
+            }
+            // !!! 不能采用如下方式添加 ———— 会覆盖原来Array.prototype!
+            // Array.prototype = {
+            // sum:function(){}
+            // }
+        let arr1 = [1, 2, 3]
+        console.log(arr1.sum());
+        console.log(Array.prototype) // 多了sum();
+        let arr2 = new Array(2, 5, 6)
+        console.log(arr2.sum());
+    </script>
+</body>
+
+</html>

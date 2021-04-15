@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //---------------while------------------
+        var num = 0;
+        while (num < 100) {
+            console.log('哈哈哈');
+            num++; //---------！！！---IMPORTANT--------
+        }
+
+        //-----弹出一对话框问爱不爱我，除非写爱，否则一直询问
+        answer = prompt('你爱我吗');
+        while (answer !== '爱') {
+            answer = prompt('你爱我吗');
+        }
+        alert('我也爱你');
+        //--------------------------------------
+        //do while 先执行一次循环体;有时简单些
+        //sum
+        var sum = 0;
+        var i = 1;
+        do {
+            sum += i;
+            i++; //------------------------!!!!!
+        } while (i <= 100);
+        console.log(sum);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 50%;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <span>按照价格查询：</span>
+        <input type="text" style="width: 50px;" class="start">- <input type="text" style="width: 50px;" class="end"> <button class="search">搜索</button> 按照商品名称查询：
+        <input style="width: 50px;" type="text" class="bargain"> <button class="probe">查询</button>
+    </div>
+    <!-- 一定要放在table 里！！ -->
+    <table>
+        <thead>
+            <th>
+                <td>id</td>
+                <td>产品名称</td>
+                <td>价格</td>
+
+            </th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script>
+        var data = [{
+                id: 1,
+                name: '小米',
+                price: 3999
+            }, {
+                id: 2,
+                name: '苹果',
+                price: 5999
+            }, {
+                id: 3,
+                name: '华为',
+                price: 4999
+            }, {
+                id: 4,
+                name: '三星',
+                price: 6999
+            }
+
+        ]
+        var tbody = document.querySelector('tbody')
+        var search = document.querySelector('.search')
+        var probe = document.querySelector('.probe')
+        var start = document.querySelector('.start')
+        var end = document.querySelector('.end')
+        var bargain = document.querySelector('.bargain')
+            // 先调用一次渲染页面
+        PaintTable(data)
+
+        function PaintTable(data) {
+            // 1 先清空原先表中内容
+
+            tbody.innerHTML = ''
+                // 2 添加筛选结果
+
+            data.forEach((value) => {
+                // 每次都创建一个对象
+                var tr = document.createElement('tr')
+
+                // 给对象添加内容
+                tr.innerHTML = '<td>' + value.id + '</td>' + '<td>' + value.name + '</td>' + '<td>' + value.price + '</td>'
+                    // 把对象添加到tbody中
+                tbody.appendChild(tr)
+
+            })
+        }
+        // 区间查询
+        search.addEventListener('click', () => {
+                var newdata = data.filter((value) => {
+                        // 返回的是对象数组
+                        return value.price >= start.value && value.price <= end.value
+                    })
+                    // 重新渲染页面
+                    // 2 添加筛选结果
+                PaintTable(newdata)
+
+            })
+            // 名称查询 some 效率更高
+        probe.addEventListener('click', () => {
+            // PaintTable接收的是数组 所以创建一个数组
+            var arr = []
+            var flag = data.filter(value => {
+                    if (value.name == bargain.value) {
+
+                        arr.push(value) //因为整体some返回布尔值 所以需要保存下对象进数组
+                        return true //一定是true 才能停止循环
+                    }
+                })
+                // 重新渲染表格
+
+            PaintTable(arr)
+        })
+    </script>
+</body>
+
+</html>

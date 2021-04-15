@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a>肖生克的救赎</a>
+            <p>1994</p>
+        </li>
+        <li>
+            <a>阿甘正传</a>
+            <p>1997</p>
+        </li>
+    </ul>
+    <script>
+        //  .  元字符：默认情况下的圆点 . 是 匹配除换行符 \n 之外的任何单个字符，加上 s 修饰符之后, . 中包含换行符 \n。
+        // .  /s 搭配  可以匹配任意字符  适合匹配有很多空格 换行的情况
+        let str = `
+    <ul>
+        <li>
+            <a>肖生克的救赎</a>
+            <p>1994</p>
+        </li>
+        <li>
+            <a>阿甘正传</a>
+            <p>1997</p>
+        </li>
+    </ul> `
+        const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs //s 特殊字圆点  g 全局匹配 ？非贪婪
+            // let res = reg.exec(str)
+            // console.log(res);
+
+        let result;
+        let data = []
+        while (result = reg.exec(str)) {
+            data.push({
+                title: result[1],
+                time: result[2]
+            })
+
+        }
+        console.log(data);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: honeydew;
+            padding: 20px;
+            border: 2px solid pink;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！ 我是神！！！
+    </div>
+    <script>
+        // 不包含边框但包含padding的盒子大小。是盒子内容的真实大小
+        var div = document.querySelector('div');
+        console.log(div.scrollHeight); //249
+        console.log(div.clientHeight); // 140
+        // scrollTop\Left用的多  返回被卷去的距离。包含了边框+卷去的文字。
+        div.addEventListener('scroll', function() {
+            console.log(div.scrollTop);
+
+        })
+    </script>
+</body>
+
+</html>

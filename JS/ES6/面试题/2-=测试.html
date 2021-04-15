@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 == 强制转换成Number比较
+        console.log(' ' == '0'); // F
+        console.log(' ' == 0); // T
+        console.log(null == undefined); // T
+        // 2 Funtion的原型 也是Function
+        console.log(Function);
+        console.log(Object.getPrototypeOf(Function));
+        // 3  测试是否为数组
+        arr = [1]
+        console.log(Object.prototype.toString.call(arr)); // [object Array]
+        console.log(Array.isArray(arr)); // true
+        console.log(arr instanceof Array); // true
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  Hero("37er")：执行结果为：Hi！ This is 37er 
+        // Hero("37er").kill(1).recover(30) 执行结果为：Hi！ This is 27er Kill 1 bug Recover 30 Bloods
+        // Hero("37er").sleep(10).kill(2) 执行结果为：Hi This is 37er 等待10s后Kill 2 bugs
+        function Hero(name) {
+            let o = new Object()
+            o.name = name
+            o.time = 0
+            console.log("Hi! This is " + o.name);
+            o.kill = function(bugs) {
+                if (bugs == 1) {
+                    console.log("Kill " + bugs + " bugs");
+                } else {
+                    setTimeout(() => {
+                        console.log("Kill " + bugs + " bugs");
+                    }, 1000 * this.time)
+                }
+                return o
+            }
+            o.recover = function(bloods) {
+                console.log("Recover " + bloods + " bloods");
+                return o
+            }
+            o.sleep = function(time) {
+                o.time = time
+                return o
+            }
+            return o
+        }
+        Hero("37er").sleep(10).kill(2)
+    </script>
+</body>
+
+</html>

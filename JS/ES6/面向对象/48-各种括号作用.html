@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // [] 包含任意一个就行
+        // ^[]$ n取1
+        // var reg = /^[abc]$/
+        // console.log(reg.test('aaf')); //f
+        // console.log(reg.test('f')); //f
+        // console.log(reg.test('c')); //t
+        // {} 重复次数
+        var reg = /^abc{3}$/ //  只是让c重复3次
+        console.log(reg.test('a')); //f
+        console.log(reg.test('abcabcabc')); //f
+        console.log(reg.test('abccc')); //t
+        // () 优先级
+        var reg = /^(abc){3}$/ //  让abc重复3次
+        console.log(reg.test('a')); //f
+        console.log(reg.test('abcabcabc')); //t
+        console.log(reg.test('abccc')); //f
+    </script>
+</body>
+
+</html>

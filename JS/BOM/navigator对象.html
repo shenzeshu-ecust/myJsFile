@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //可以根据不同客户端显示不同界面以适应客户端（手机、pc...）
+        // navigator对象包含有关浏览器的信息，有很多属性，最常用的是userAgent,根据该属性可以返回
+        // 由客户机发送服务器的user-agent头部的值
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            window.location.href = ""; //手机
+        } else {
+            window.location.href = ""; //电脑
+        }
+    </script>
+</body>
+
+</html>

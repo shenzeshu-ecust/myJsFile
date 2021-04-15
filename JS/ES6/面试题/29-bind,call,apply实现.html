@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myCall = function(context) {
+                //判断调用对象
+                if (typeof this !== "function") throw new TypeError("not function")
+                    //获取参数
+                let args = [...arguments].slice(1)
+                let result = null;
+                //判断context是否传入，如果未传入则设置未window
+                context = context || window;
+                //将调用函数设为对象的方法
+                context.fn = this;
+                //调用函数
+                result = context.fn(...args);
+                //将属性删除
+                delete context.fn;
+                return result;
+            }
+            //         call 函数的实现步骤：
+            // 1.判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
+            // 2.判断传入上下文对象是否存在，如果不存在，则设置为 window。
+            // 3.处理传入的参数，截取第一个参数后的所有参数。
+            // 4.将函数作为上下文对象的一个属性。
+            // 5.使用上下文对象来调用这个方法，并保存返回结果。
+            // 6.删除刚才新增的属性。
+            // 7.返回结果。
+        Function.prototype.call = function(context) {
+            if (typeof this !== 'function') throw new TypeError('not a function')
+            let result = null
+            let args = [...arguments].slice(1)
+            context = context || window
+            context.fn = this
+            result = context.fn(...args)
+            delete context.fn
+            return result
+
+        }
+        Function.prototype.myApply = function(context) {
+                //判断调用对象是否为函数
+                if (typeof this !== "function") throw new TypeError('Error')
+                let result = null;
+                context = context || window;
+                context.fn = this;
+                if (arguments[1]) {
+                    result = context.fn(...arguments[1]);
+                } else {
+                    result = context.fn();
+                }
+                delete context.fn;
+                return result;
+            }
+            //         apply 函数的实现步骤：
+            // 1.判断调用对象是否为函数，即使我们是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
+            // 2.判断传入上下文对象是否存在，如果不存在，则设置为 window 。
+            // 3.将函数作为上下文对象的一个属性。
+            // 4.判断参数值是否传入
+            // 5.使用上下文对象来调用这个方法，并保存返回结果。
+            // 6.删除刚才新增的属性
+            // 7.返回结果
+        Function.prototype.apply = function(context) {
+            if (typeof this !== 'funtion') throw new TypeError("not function")
+            let result = null
+            context = context || window
+            context.fn = this
+            if (arguments[1]) {
+                result = context.fn(...arguments[1])
+            } else {
+                result = context.fn()
+            }
+            delete context.fn
+            return result
+        }
+        Function.prototype.myBind = function(context) {
+                if (typeof this !== "function") throw new TypeError('Error')
+
+                var args = [...arguments].slice(1)
+                let fn = this;
+                let fBound = function Fn() {
+                    //根据调用方式，传入不同绑定值
+                    return fn.apply(
+                        this instanceof Fn ? this : context,
+                        args.concat(...arguments)
+                    )
+                }
+                fBound.prototype = Object.create(this.prototype)
+                return fBound
+            }
+            // bind 函数的实现步骤：
+            // 1. 判断调用对象是否为函数， 即使我们是定义在函数的原型上的， 但是可能出现使用 call 等方式调用的情况。
+            // 2. 保存当前函数的引用， 获取其余传入参数值。
+            // 3. 创建一个函数返回
+            // 4. 函数内部使用 apply 来绑定函数调用， 需要判断函数作为构造函数的情况， 这个时候需要传入当前函数的 this 给 apply 调用，
+            //  其余情况都传 入指定的上下文对象。
+            // ------------------- FINAL VERSION -------------------------------------------
+        Function.prototype.myBind = function(context) {
+                if (typeof this !== 'function') throw new TypeError("not function")
+                let args = [...arguments].slice(1)
+                let fn = this
+                let fBound = function Fn() {
+                    return fn.apply(this instanceof Fn ? this : context, args.concat(...arguments))
+                }
+                fBound.prototype = Object.create(this.prototype) //，这样就可以拿到原型上的方法了
+                return fBound
+            }
+            //---------------------------------------------------------------------------------
+            // bind返回一个函数，对于函数来说有两种方式调用，一种是直接调用，一种是通过new的方式，我们先来说直接调用的方式
+            // 对于直接调用来说，这里选择了apply的方式，但是对于参数需要注意以下情况:因为bind可以实现类似这样的代码 f.bind(obj,1)(2),所以我们需要将两边的参数拼接起来，于是就有了这样的实现args.concat(…arguments)
+            // new的方式，我们先判断this，对于new的情况，不会被任何方式改变this，所以对于这种情况我们需要忽略传入的this(context)
+
+
+        Function.prototype.mybind = function(context) {
+            if (typeof this !== 'function') {
+                throw new TypeError('not a function')
+            }
+            let args = [...arguments].slice(1)
+            let fn = this
+            let fbound = function Fn() {
+                return fn.apply(this instanceof Fn ? this : context, args.concat(...arguments))
+            }
+            fbound.prototype = Object.create(this.prototype)
+            return fbound
+        }
+
+
+
+
+
+
+
+
+        Function.prototype.mycall = function(context, ...args) {
+            if (typeof this !== 'function') {
+                throw new TypeError('not funciton')
+            }
+            const fn = this //可以通过const fn = this获取到要执行的函数
+            let result = null
+            context = context || window
+            context.fn = fn //将该函数绑定到传入的context对象(context.fn = fn)
+            result = context.fn(...args) //调用
+            delete context.fn
+
+            return result
+        }
+
+
+        Function.prototype.myapply = function(context, ...argus) {
+            if (typeof this !== 'function') {
+                throw new TypeError('not funciton')
+            }
+            const fn = this
+            let result = null
+
+            context = context || window
+            argus = argus && argus[0] || []
+            context.fn = fn
+            result = context.fn(...argus)
+            delete context.fn
+
+            return result
+        }
+        Function.prototype.mybind = function(context, ...argus) {
+            if (typeof this !== 'function') {
+                throw new TypeError('not funciton')
+            }
+            const fn = this
+            const fBound = function(...argus2) {
+                return fn.apply(this instanceof fBound ? this : context, [...argus, ...argus2])
+            }
+            fBound.prototype = Object.create(this.prototype)
+            return fBound
+        }
+        console.log(typeof NaN); //number
+
+
+        Function.prototype.myBind = function(obj, ...args) {
+            obj.fn = this;
+            return function() {
+                const newArgs = args.concat(...arguments);
+                let ret = obj.fn(...newArgs);
+                delete obj.fn;
+                return ret;
+            }
+        }
+        Function.prototype.myBind = function(context) {
+            // 判断是否是undefined和null
+            if (typeof context === "undefined" || context === null) {
+                context = window;
+            }
+            self = this;
+            return function(...args) {
+                return self.apply(context, args);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 表单需要两个新事件：获得焦点onfocus，失去焦点onblur
+    如果获得焦点，判断里面是否为默认文字，是：清空源表单内容。 获得焦点后输入的文字颜色变深
+    如果失去焦点，判断里面是否为空，空：表单内容改为默认文字。失去焦点后。文字颜色变浅 -->
+    <input type="text" value="请输入">
+    <script>
+        var input = document.querySelector('input');
+        input.onfocus = function() {
+            if (this.value === '请输入') {
+                this.value = '';
+            }
+            this.style.color = 'black';
+        }
+        input.onblur = function() {
+            if (this.value === '') {
+                this.value = '请输入';
+            }
+            this.style.color = '#999'
+        }
+    </script>
+</body>
+
+</html>

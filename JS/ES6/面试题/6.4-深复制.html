@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 法1
+        // JSON.parse(JSON.stringify(obj));无法实现对 对象中 方法的深拷贝
+        /*
+            1）拷贝的对象的值中如果有函数,undefined,symbol，经过JSON.stringify()序列化后的JSON字符串中这个键值对会消失；
+
+            2）无法拷贝不可枚举的属性，无法拷贝对象的原型链
+            3）拷贝Date引用类型会变成字符串
+
+            4）拷贝RegExp引用类型会变成空对象
+
+            5）对象中含有NaN、Infinity和-Infinity，则序列化的结果会变成null
+        */
+        // 法2
+        function clone(obj) {
+            var buf;
+            if (obj instanceof Array) {
+                buf = []; //创建一个空数组
+                var i = obj.length;
+                while (i--) {
+                    buf[i] = clone(obj[i]);
+                }
+                return buf;
+            } else if (obj instanceof Object) {
+                buf = {};
+                for (var k in obj) {
+                    buf[k] = clone(obj[k]);
+                }
+                return buf;
+            } else {
+                return obj;
+            }
+        }
+
+
+        //测试代码
+        var a = {
+            name: "amy",
+            age: 50
+        }
+
+        var b = clone(a);
+        console.log(b);
+        //3 
+        function deepClone(obj) {
+            let objClone = Array.isArray(obj) ? [] : {};
+            if (obj && typeof obj === "object") {
+                for (key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        //判断ojb子元素是否为对象，如果是，递归复制
+                        if (obj[key] && typeof obj[key] === "object") {
+                            objClone[key] = deepClone(obj[key]);
+                        } else {
+                            //如果不是，简单复制
+                            objClone[key] = obj[key];
+                        }
+                    }
+                }
+            }
+            return objClone;
+        }
+
+        function deepClone(obj) {
+            let res = Array.isArray(obj) ? [] : {}
+            if (obj && typeof obj === 'object') {
+                for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        if (obj[key] && typeof obj[key] === 'object') {
+                            res[key] = deepClone(obj[key])
+                        } else {
+                            res[key] = obj[key]
+                        }
+                    }
+                }
+            }
+            return res
+        }
+
+        function deepClone(t) {
+            let res;
+            if (typeof t === 'object') {
+                if (Array.isArray(t)) {
+                    res = []
+                    for (let i in t) {
+                        res.push(deepClone(t[i]))
+                    }
+                } else if (t == null) {
+                    res = null
+                } else if (t.constructor == RegExp) {
+                    res = t
+                } else {
+                    res = {}
+                    for (let i in t) {
+                        res[i] = deepClone(t[i])
+                    }
+                }
+            } else {
+                res = t
+            }
+            return res
+        }
+
+
+
+        function deepClone(t) {
+            let result
+            if (typeof t === ' object') {
+                if (Array.isArray(t)) {
+                    result = []
+                    for (let i in t) {
+                        result.push(deepClone(t[i]))
+                    }
+                } else if (t == null) {
+                    result = null
+                } else if (t.constructor == RegExp) {
+                    result = t
+                } else {
+                    result = {}
+                    for (let i in t) {
+                        result[i] = deepClone(t[i])
+                    }
+                }
+            } else {
+                result = t
+            }
+            return result
+        }
+    </script>
+</body>
+
+</html>

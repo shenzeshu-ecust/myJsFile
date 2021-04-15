@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            background-color: pink;
+            width: 100px;
+            height: 300px;
+        }
+        
+        li {
+            height: 80px;
+            width: 80px;
+            margin: 10px auto;
+            background-color: royalblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>11</li>
+        <li>22</li>
+        <li>33</li>
+    </ul>
+    <script>
+        //点击li，但给ul绑定事件：由于冒泡，ul事件还是会触发
+        var ul = document.querySelector('ul');
+        ul.addEventListener('click', function(e) {
+                // e.target 指定点击的对象
+                console.log(e.target);
+                // this指向绑定的对象
+                console.log(this);
+                console.log(e.currentTarget);
+
+            })
+            // 了解兼容性：
+        ul.onclick = function(e) {
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+                console.log(target);
+            }
+            // 了解：有个和this很相似的属性:但有兼容性问题
+            // console.log(e.currentTarget);
+    </script>
+</body>
+
+</html>

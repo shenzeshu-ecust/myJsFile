@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var obj = {
+                name: 'Nancy',
+                age: 18,
+                gender: 'girl',
+                goodat: function() {
+                    console.log('Sing...');
+                }
+            }
+            // 利用for in 遍历  （默认用k、key）
+        for (let k in obj) {
+            console.log(k); //返回的是属性名、方法名
+            console.log(obj[k]); //返回的是属性值 、方法体
+
+        }
+
+        var pc = new Object();
+        pc.color = 'white';
+        pc.weight = '600g';
+        pc.id = 20654875;
+        pc.listen = function(song) {
+            console.log('I am listening ' + song);
+        }
+        pc.listen('Hey Judy');
+        for (let k in pc) {
+            console.log(pc[k]);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
